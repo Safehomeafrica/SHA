@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SAFE HOME AFRICA - Empowering Refugee Youth</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --primary: #E63946;
+            --secondary: #457B9D;
+            --dark: #1D3557;
+            --light: #F1FAEE;
+            --accent: #A8DADC;
+            --white: #FFFFFF;
+            --shadow: 0 10px 30px rgba(29, 53, 87, 0.1);
+        }
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            background: rgba(255,255,255,0.97);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            font-size: 1.7rem;
+            font-weight: bold;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        .logo i {
+            font-size: 1.7rem;
+            margin-right: 10px;
+            color: var(--primary-red);
+            vertical-align: middle;
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        .nav-links.active {
+            display: block;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background: var(--white);
+            box-shadow: var(--shadow);
+            padding: 20px 0;
+            text-align: center;
+        }
+        .nav-links a {
+            display: block;
+            padding: 10px 0;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 6px 0;
+            transition: color 0.3s;
+        }
+        .nav-links a.active,
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        .nav-links a.active::after,
+        .nav-links a:hover::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+            position: absolute;
+            left: 0; bottom: 0;
+        }
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+        }
+        .mobile-menu i {
+            font-size: 1.8rem;
+            color: var(--dark);
+        }
+
+        /* Prevent horizontal scrolling */
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+        /* Hero Section */
+        .hero {
+            min-height: 70vh; /* Reduce the height */
+            padding-top: 80px; /* Reduce top padding */
+            background: linear-gradient(120deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-slider {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0;
+        }
+        .hero-bg-img {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s;
+            z-index: 0;
+        }
+        .hero-bg-img.active {
+            opacity: 0.18;
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .hero-content h1 {
+            font-size: 2.8rem; /* Reduce heading font size */
+            margin-bottom: 18px; /* Adjust spacing */
+            text-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            animation: fadeInDown 1s;
+        }
+        .hero-content p {
+            font-size: 1.2rem; /* Reduce paragraph font size */
+            margin-bottom: 30px; /* Adjust spacing */
+        }
+        .hero-btn {
+            background: var(--accent);
+            color: var(--dark);
+            border: none;
+            padding: 12px 30px; /* Adjust button padding */
+            border-radius: 30px;
+            font-size: 1rem; /* Reduce button font size */
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 18px rgba(69,123,157,0.13);
+            transition: background 0.3s, color 0.3s;
+            text-decoration: none;
+        }
+        .hero-btn:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            margin-top: 50px;
+            z-index: 2;
+            position: relative;
+        }
+        .stat-card {
+            background: var(--white);
+            color: var(--dark);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            padding: 40px 50px;
+            min-width: 200px;
+            text-align: center;
+            transition: transform 0.3s;
+            animation: fadeInUp 1.3s;
+        }
+        .stat-card:hover {
+            transform: translateY(-10px) scale(1.04);
+        }
+        .stat-number {
+            font-size: 2.7rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .stat-label {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        /* About Preview */
+        .about-preview {
+            background: var(--white);
+            padding: 80px 20px; /* Adjust padding for smaller screens */
+        }
+        .about-flex {
+            display: flex;
+            align-items: center;
+            gap: 40px; /* Reduce gap */
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap; /* Allow wrapping for smaller screens */
+        }
+        .about-text {
+            flex: 1;
+            text-align: center; /* Center-align text for mobile */
+        }
+        .about-text h2 {
+            font-size: 2rem; /* Reduce heading size */
+            color: var(--dark);
+            margin-bottom: 16px;
+        }
+        .about-text p {
+            font-size: 1rem; /* Reduce paragraph size */
+            color: #444;
+            margin-bottom: 20px;
+        }
+        .about-btn {
+            font-size: 1rem; /* Adjust button size */
+            padding: 10px 20px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        .about-btn:hover {
+            background: var(--secondary);
+        }
+        .about-img-wrap {
+            flex: 1;
+            text-align: center;
+        }
+        .about-img {
+            width: 100%;
+            max-width: 300px; /* Limit image size */
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        /* Programs Preview */
+        .programs-preview {
+            background: var(--light);
+            padding: 90px 0 60px;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 12px;
+            position: relative;
+            display: inline-block;
+        }
+        .section-header h2:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            margin: 10px auto 0;
+        }
+        .section-header p {
+            color: var(--secondary);
+            font-size: 1.15rem;
+        }
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 35px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .program-card {
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            padding: 40px 28px;
+            text-align: center;
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .program-card:hover {
+            transform: translateY(-10px) scale(1.03);
+        }
+        .program-icon {
+            font-size: 2.7rem;
+            color: var(--primary);
+            margin-bottom: 18px;
+        }
+        .program-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        .program-desc {
+            color: #444;
+            font-size: 1.05rem;
+            margin-bottom: 18px;
+        }
+        .program-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .program-link:hover {
+            color: var(--secondary);
+        }
+
+        /* Impact Section */
+        .impact-section {
+            background: var(--white);
+            padding: 90px 0 80px;
+        }
+        .impact-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .impact-header h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        .impact-stories {
+            display: flex;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        .impact-story {
+            background: var(--light);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            padding: 32px 24px;
+            flex: 1 1 320px;
+            min-width: 320px;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+        .impact-story:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+        .impact-story h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.15rem;
+        }
+        .impact-story p {
+            color: #444;
+            font-size: 1.05rem;
+        }
+
+        /* Partners Section */
+        .partners-section {
+            
+            padding: 70px 0 60px;
+        }
+        .partners-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .partners-header h2 {
+            font-size: 2.1rem;
+        
+        }
+        .partners-logos {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .partner-logo {
+            width: 120px;
+            height: 60px;
+            object-fit: contain;
+            filter: grayscale(1) brightness(0.8);
+            opacity: 0.7;
+            transition: filter 0.3s, opacity 0.3s;
+        }
+        .partner-logo:hover {
+            filter: none;
+            opacity: 1;
+        }
+
+        /* Floating CTA */
+        .floating-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: var(--white);
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 5px 25px rgba(230, 57, 70, 0.3);
+            z-index: 999;
+            cursor: pointer;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+        .floating-cta:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(230, 57, 70, 0.4);
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.7);}
+            70% { box-shadow: 0 0 0 15px rgba(230, 57, 70, 0);}
+            100% { box-shadow: 0 0 0 0 rgba(230, 57, 70, 0);}
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 70px 0 25px;
+            margin-top: 60px;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+        }
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+        .footer-logo i {
+            font-size: 1.7rem;
+            margin-right: 10px;
+            color: var(--primary-red);
+            vertical-align: middle;
+        }
+        .footer-logo img {
+            height: 38px;
+            width: auto;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+        .footer-about { opacity: 0.85; margin-bottom: 18px;}
+        .footer-social { display: flex; gap: 12px;}
+        .footer-social a {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+        .footer-social a:hover {
+            background: var(--primary);
+            color: #fff;
+            transform: translateY(-4px);
+        }
+        .footer-links { list-style: none; padding: 0;}
+        .footer-links li { margin-bottom: 12px;}
+        .footer-links a {
+            color: var(--white);
+            opacity: 0.8;
+            text-decoration: none;
+            transition: color 0.3s, opacity 0.3s;
+        }
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--primary);
+        }
+        .footer-container h3 {
+            color: var(--white);
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            position: relative;
+            display: inline-block;
+        }
+        .footer-container h3::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+            margin-top: 6px;
+            border-radius: 2px;
+        }
+        .footer-contact p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            opacity: 0.8;
+            font-size: 0.97rem;
+        }
+        .footer-contact i { color: var(--primary);}
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+            font-size: 0.97rem;
+        }
+        @media (max-width: 900px) {
+            .footer-container { padding: 0 18px;}
+        }
+        @media (max-width: 600px) {
+            .footer-container { grid-template-columns: 1fr;}
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem; /* Reduce font size */
+                line-height: 1.2;
+            }
+
+            .hero-content p {
+                font-size: 1rem; /* Reduce font size */
+                margin-bottom: 20px;
+            }
+
+            .hero-btn {
+                font-size: 0.9rem; /* Reduce button size */
+                padding: 10px 20px;
+            }
+
+            .stats {
+                flex-direction: column; /* Stack stats vertically */
+                gap: 15px;
+            }
+
+            .stat-card {
+                padding: 15px; /* Reduce padding */
+                min-width: 100%; /* Make cards full width */
+            }
+
+            .stat-number {
+                font-size: 2rem; /* Reduce font size */
+            }
+
+            .stat-label {
+                font-size: 1rem; /* Reduce font size */
+            }
+
+            .about-flex {
+                flex-direction: column; /* Stack content vertically */
+                gap: 20px;
+            }
+
+            .about-text h2 {
+                font-size: 1.8rem; /* Reduce heading size */
+            }
+
+            .about-text p {
+                font-size: 1rem; /* Reduce paragraph size */
+            }
+
+            .about-btn {
+                font-size: 0.9rem; /* Reduce button size */
+                padding: 10px 20px;
+            }
+
+            .about-img {
+                max-width: 100%; /* Ensure image fits screen */
+                height: auto;
+            }
+
+            .contact-content {
+                flex-direction: column; /* Stack form and info vertically */
+                padding: 20px 10px;
+            }
+
+            .contact-info {
+                padding-right: 0;
+                border-right: none;
+                margin-bottom: 20px;
+            }
+
+            .contact-form form {
+                gap: 10px; /* Reduce spacing between inputs */
+            }
+
+            .contact-form input,
+            .contact-form textarea {
+                font-size: 0.9rem; /* Reduce input font size */
+                padding: 10px; /* Reduce input padding */
+            }
+
+            .contact-form button {
+                font-size: 1rem; /* Reduce button font size */
+                padding: 12px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.jpeg" alt="Safe Home Africa Logo" style="height:38px;width:auto;border-radius:50%;margin-right:10px;object-fit:cover;">
+                <span>SAFE HOME AFRICA</span>
+            </a>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="champion-of-change.html">Champion of Change</a></li>
+                <li><a href="impact.html">Impact</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="admin-login.html" class="admin-link"><i class="fas fa-lock"></i> Admin Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-slider">
+            <img src="images/HERO SECTION images/HERO_PIC1.avif" alt="SHA Team" class="hero-bg-img active">
+            <img src="images/HERO SECTION images/HERO_PIC2.avif" alt="Team Meeting" class="hero-bg-img">
+            <img src="images/HERO SECTION images/HERO_PIC3.avif" alt="Community" class="hero-bg-img">
+            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1470&q=80" alt="Youth Empowerment" class="hero-bg-img">
+        </div>
+        <div class="hero-content">
+            <h1>Empowering Refugee Youth<br>Through Community Leadership</h1>
+            <p>A refugee-led organization transforming lives in Nyumanzi Settlement since 2022.</p>
+            <a href="about.html" class="hero-btn">Discover Our Story</a>
+        </div>
+      
+    </section>
+
+    <!-- About Preview -->
+    <section class="about-preview">
+        <div class="about-flex">
+            <div class="about-text">
+                <h2>Who We Are</h2>
+                <p>
+                    SAFE HOME AFRICA is a refugee youth-led community-based organization in Nyumanzi Settlement, Uganda. We empower young people to become leaders, advocates, and agents of change through health, education, and protection programs.
+                </p>
+                <p>
+                    Our mission is to mobilize, support, empower, nurture and transform youth to become pillars of providing health care & psychosocial services with excellence through evidence-based practice in safe homes.
+                </p>
+                <a href="about.html" class="about-btn">Learn More About Us</a>
+            </div>
+            <div class="about-img-wrap">
+                <img src="images/CHOL.jpg" alt="SHA Team Meeting" class="about-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Preview -->
+    <section class="programs-preview">
+        <div class="section-header">
+            <h2>Our Core Programs</h2>
+            <p>Building hope and resilience through targeted initiatives</p>
+        </div>
+        <div class="programs-grid">
+            <div class="program-card">
+                <div class="program-icon"><i class="fas fa-brain"></i></div>
+                <div class="program-title">Mental Health Support</div>
+                <div class="program-desc">Providing counseling, trauma healing, and psychosocial support for youth and families.</div>
+                <a href="programs.html#mental-health" class="program-link">Learn More</a>
+            </div>
+            <div class="program-card">
+                <div class="program-icon"><i class="fas fa-users"></i></div>
+                <div class="program-title">Youth Empowerment</div>
+                <div class="program-desc">Leadership training, life skills, and mentorship to nurture future community leaders.</div>
+                <a href="programs.html#youth-empowerment" class="program-link">Learn More</a>
+            </div>
+            <div class="program-card">
+                <div class="program-icon"><i class="fas fa-child"></i></div>
+                <div class="program-title">Child Protection</div>
+                <div class="program-desc">Safeguarding vulnerable children through advocacy, education, and safe spaces.</div>
+                <a href="programs.html#child-protection" class="program-link">Learn More</a>
+            </div>
+            <div class="program-card">
+                <div class="program-icon"><i class="fas fa-heartbeat"></i></div>
+                <div class="program-title">Health Promotion</div>
+                <div class="program-desc">Community health education, disease prevention, and access to essential services.</div>
+                <a href="programs.html#health-promotion" class="program-link">Learn More</a>
+            </div>
+            <div class="program-card">
+                <div class="program-icon"><i class="fas fa-seedling"></i></div>
+                <div class="program-title">Livelihood Programs</div>
+                <div class="program-desc">Vocational training and income-generating activities for sustainable futures.</div>
+                <a href="programs.html#livelihood" class="program-link">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact-section">
+        <div class="impact-header">
+            <h2>Impact Stories</h2>
+            <p>Real lives changed by SAFE HOME AFRICA</p>
+        </div>
+        <div class="impact-stories">
+            <div class="impact-story">
+                <h4>Sarah's Journey</h4>
+                <p>
+                    After joining our Youth Empowerment program, Sarah gained confidence and leadership skills. Today, she leads a girls' club, inspiring others to pursue education and health.
+                </p>
+            </div>
+            <div class="impact-story">
+                <h4>Community Healing</h4>
+                <p>
+                    Our Mental Health Support initiative has helped over 300 youth and families overcome trauma, fostering hope and resilience in Nyumanzi Settlement.
+                </p>
+            </div>
+            <div class="impact-story">
+                <h4>Safe Spaces for Children</h4>
+                <p>
+                    Through our Child Protection program, children at risk now have access to safe spaces, education, and caring mentors.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners-section">
+        <div class="partners-header">
+            <h2>Our Partners</h2>
+            <p>Together, we make a greater impact</p>
+        </div>
+        <div class="partners-logos">
+            <img src="images/UNHCR.png" alt="UNHCR" class="partner-logo">
+            <img src="images/YEF.png" alt="YEF" class="partner-logo">
+            <img src="images/RHU.png" alt="RHU" class="partner-logo">
+            <img src="images/LWF.png" alt="LWF" class="partner-logo">
+            <img src="images/RWA.jpeg" alt="RWA" class="partner-logo">
+        </div>
+    </section>
+
+   <!-- Contact Section -->
+<section class="contact-section" style="background: var(--white); padding: 80px 0 60px;">
+    <style>
+        .contact-section {
+            background: var(--white);
+            padding: 80px 0 60px;
+        }
+        .contact-header h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 18px;
+        }
+        .contact-header p {
+            color: var(--dark);
+            font-size: 1.15rem;
+        }
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--light);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(69,123,157,0.08);
+            padding: 40px 30px;
+        }
+        .contact-info {
+            flex: 1;
+            min-width: 270px;
+            padding-right: 20px;
+            border-right: 1px solid #eee;
+        }
+        .contact-info h3 {
+            color: var(--secondary);
+            margin-bottom: 18px;
+            font-size: 1.3rem;
+        }
+        .contact-info ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 24px;
+            color: #444;
+            font-size: 1.07rem;
+        }
+        .contact-info ul li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        .contact-info ul li i {
+            color: var(--primary);
+            margin-right: 10px;
+            font-size: 1.1rem;
+        }
+        .contact-info ul li a {
+            color: var(--dark);
+            text-decoration: underline;
+            transition: color 0.2s;
+        }
+        .contact-info ul li a:hover {
+            color: var(--primary);
+        }
+        .social-links {
+            display: flex;
+            gap: 14px;
+            margin-top: 10px;
+        }
+        .social-links a {
+            color: #E63946;
+            background: #fff;
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 2px 8px rgba(230,57,70,0.08);
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+        }
+        .social-links a:hover {
+            background: var(--primary);
+            color: #fff;
+            transform: translateY(-3px) scale(1.08);
+        }
+        .contact-form {
+            flex: 2;
+            min-width: 320px;
+            padding-left: 20px;
+        }
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 14px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            background: #fff;
+            transition: border 0.2s;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border: 1.5px solid var(--primary);
+            outline: none;
+        }
+        .contact-form button {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 14px 0;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+            margin-top: 8px;
+        }
+        .contact-form button:hover {
+            background: var(--secondary);
+        }
+        @media (max-width: 900px) {
+            .contact-content {
+                flex-direction: column;
+                padding: 30px 10px;
+            }
+            .contact-info {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+                padding-right: 0;
+                padding-bottom: 20px;
+                margin-bottom: 20px;
+            }
+            .contact-form {
+                padding-left: 0;
+            }
+        }
+    </style>
+
+    <!-- Why Choose Us Section -->
+    <section style="background: var(--light); padding: 70px 0;">
+      <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
+        <h2 style="color: var(--primary); font-size: 2.3rem; margin-bottom: 18px;">Why Choose Safe Home Africa?</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; margin-top: 40px;">
+          <div style="flex:1; min-width:220px; background: #fff; border-radius: 14px; box-shadow: var(--shadow); padding: 32px;">
+            <i class="fas fa-hands-helping" style="font-size:2rem; color:var(--secondary); margin-bottom:12px;"></i>
+            <h4>Community-Led</h4>
+            <p>Programs designed and led by refugee youth for real, lasting impact.</p>
+          </div>
+          <div style="flex:1; min-width:220px; background: #fff; border-radius: 14px; box-shadow: var(--shadow); padding: 32px;">
+            <i class="fas fa-award" style="font-size:2rem; color:var(--secondary); margin-bottom:12px;"></i>
+            <h4>Proven Results</h4>
+            <p>Thousands of lives improved through health, education, and protection initiatives.</p>
+          </div>
+          <div style="flex:1; min-width:220px; background: #fff; border-radius: 14px; box-shadow: var(--shadow); padding: 32px;">
+            <i class="fas fa-heart" style="font-size:2rem; color:var(--secondary); margin-bottom:12px;"></i>
+            <h4>Inclusive & Caring</h4>
+            <p>We foster a safe, inclusive environment for all youth and families.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Carousel -->
+    <section style="background: var(--white); padding: 70px 0;">
+      <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+        <h2 style="color: var(--primary); font-size: 2.1rem; margin-bottom: 18px;">What People Say</h2>
+        <div id="testimonial-carousel" style="position:relative; min-height: 140px;">
+          <blockquote style="font-size:1.2rem; color:#444; margin:0 0 18px;">
+            <span id="testimonial-text">"Safe Home Africa gave me hope and a new purpose. I am now a youth leader in my community."</span>
+          </blockquote>
+          <div style="color:var(--secondary); font-weight:600;">
+            <span id="testimonial-author">— Daniel, Youth Beneficiary</span>
+          </div>
+          <button id="prevTestimonial" style="position:absolute; left:0; top:50%; transform:translateY(-50%); background:none; border:none; font-size:2rem; color:var(--primary); cursor:pointer;">&#8249;</button>
+          <button id="nextTestimonial" style="position:absolute; right:0; top:50%; transform:translateY(-50%); background:none; border:none; font-size:2rem; color:var(--primary); cursor:pointer;">&#8250;</button>
+        </div>
+      </div>
+    </section>
+    <script>
+        const testimonials = [
+          {
+            text: '"Safe Home Africa gave me hope and a new purpose. I am now a youth leader in my community."',
+            author: '— Daniel, Youth Beneficiary'
+          },
+          {
+            text: '"The mental health support changed my life. I feel stronger and more confident."',
+            author: '— Sarah, Program Participant'
+          },
+          {
+            text: '"Their team truly cares. Our partnership has made a real difference."',
+            author: '— UNHCR Field Officer'
+          }
+        ];
+        
+        let tIndex = 0;
+        
+        function showTestimonial(idx) {
+          document.getElementById('testimonial-text').textContent = testimonials[idx].text;
+          document.getElementById('testimonial-author').textContent = testimonials[idx].author;
+        }
+        
+        // Navigate to the previous testimonial
+        document.getElementById('prevTestimonial').onclick = () => {
+          tIndex = (tIndex - 1 + testimonials.length) % testimonials.length;
+          showTestimonial(tIndex);
+        };
+        
+        // Navigate to the next testimonial
+        document.getElementById('nextTestimonial').onclick = () => {
+          tIndex = (tIndex + 1) % testimonials.length;
+          showTestimonial(tIndex);
+        };
+        
+        // Automatically slide testimonials every 5 seconds
+        setInterval(() => {
+          tIndex = (tIndex + 1) % testimonials.length;
+          showTestimonial(tIndex);
+        }, 5000);
+        
+        // Initialize the first testimonial
+        showTestimonial(tIndex);
+        </script>
+
+    <!-- Latest News & Events -->
+    <section style="background: var(--light); padding: 70px 0;">
+      <div style="max-width: 1100px; margin: 0 auto;">
+        <h2 style="text-align:center; color:var(--primary); font-size:2.1rem; margin-bottom:30px;">Latest News & Events</h2>
+        <div style="display:flex; flex-wrap:wrap; gap:30px; justify-content:center;">
+          <div style="background:#fff; border-radius:12px; box-shadow:var(--shadow); padding:24px; min-width:260px; flex:1;">
+            <h4 style="color:var(--secondary); margin-bottom:10px;">Youth Leadership Workshop</h4>
+            <p style="color:#444; font-size:1rem;">June 2025: Over 50 youth participated in our annual leadership training, building skills for community advocacy.</p>
+          </div>
+          <div style="background:#fff; border-radius:12px; box-shadow:var(--shadow); padding:24px; min-width:260px; flex:1;">
+            <h4 style="color:var(--secondary); margin-bottom:10px;">Mental Health Awareness Week</h4>
+            <p style="color:#444; font-size:1rem;">May 2025: We hosted workshops and counseling sessions to promote mental wellness in Nyumanzi Settlement.</p>
+          </div>
+          <div style="background:#fff; border-radius:12px; box-shadow:var(--shadow); padding:24px; min-width:260px; flex:1;">
+            <h4 style="color:var(--secondary); margin-bottom:10px;">New Partnership with UNICEF</h4>
+            <p style="color:#444; font-size:1rem;">April 2025: We are excited to announce a new partnership to expand child protection programs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Volunteer/Join Us CTA -->
+    <section style="background: linear-gradient(120deg, var(--primary) 0%, var(--secondary) 100%); color: #fff; padding: 70px 0; text-align:center;">
+      <h2 style="font-size:2.2rem; margin-bottom:18px;">Become a Volunteer</h2>
+      <p style="font-size:1.15rem; margin-bottom:30px;">Join our mission to empower refugee youth and transform lives. Volunteers are the heart of our impact!</p>
+      <a href="contact.html" class="hero-btn" style="background:var(--white); color:var(--primary);">Join Us</a>
+    </section>
+
+    <!-- FAQ Section -->
+    <section style="background: var(--white); padding: 70px 0;">
+      <div style="max-width: 900px; margin: 0 auto;">
+        <h2 style="color: var(--primary); text-align:center; font-size:2.1rem; margin-bottom:28px;">Frequently Asked Questions</h2>
+        <div style="border-radius:12px; box-shadow:var(--shadow); background:#f9f9f9; padding:32px;">
+          <details style="margin-bottom:18px;">
+            <summary style="font-weight:600; color:var(--secondary); cursor:pointer;">Who can join your programs?</summary>
+            <p style="margin-top:8px; color:#444;">Our programs are open to all youth in Nyumanzi Settlement, with a focus on refugees and vulnerable groups.</p>
+          </details>
+          <details style="margin-bottom:18px;">
+            <summary style="font-weight:600; color:var(--secondary); cursor:pointer;">How can I volunteer?</summary>
+            <p style="margin-top:8px; color:#444;">Fill out the contact form or email us. We welcome volunteers from all backgrounds!</p>
+          </details>
+          <details>
+            <summary style="font-weight:600; color:var(--secondary); cursor:pointer;">How are donations used?</summary>
+            <p style="margin-top:8px; color:#444;">Donations directly support our programs, outreach, and capacity building for youth and families.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <div class="contact-header" style="text-align:center; margin-bottom:40px;">
+        <h2>Contact Us</h2>
+        <p>
+            Have questions or need support? Reach out to our team and we’ll get back to you as soon as possible.
+        </p>
+    </div>
+    <div class="contact-content">
+        <div class="contact-info">
+            <h3>Get in Touch</h3>
+            <ul>
+                <li>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <a href="https://maps.google.com/?q=Nyumanzi+Refugee+Settlement,+Adjumani+District,+Uganda" target="_blank">
+                        P.O. BOX 530078, Nyumanzi Refugee Settlement, Adjumani District, Uganda
+                    </a>
+                </li>
+                <li>
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:safehomeafrica@gmail.com">safehomeafrica@gmail.com</a>
+                </li>
+                <li>
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+256775480844">+256 775 480 844</a>
+                </li>
+                <li>
+                    <i class="fas fa-clock"></i> Mon - Fri: 8:00am - 6:00pm
+                </li>
+            </ul>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <div class="contact-form">
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <!-- Replace 'YOUR_ACCESS_KEY_HERE' with your Web3Forms access key -->
+                <input type="hidden" name="access_key" value="9af4279c-3646-4d62-bb22-82c7ad6ee894">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+    <!-- Our Partners Section -->
+    <div id="ourPartnersSection" style="display:flex;flex-wrap:wrap;gap:24px;justify-content:center;margin:30px 0;"></div>
+    <script>
+    const partners = JSON.parse(localStorage.getItem('partners') || '[]');
+    const container = document.getElementById('ourPartnersSection');
+    if (partners.length === 0) {
+        container.innerHTML = '<p style="color:#888;">THANKS TO OUR PARTNERS.</p>';
+    } else {
+        container.innerHTML = partners.map(p => `
+            <div style="display:flex;flex-direction:column;align-items:center;min-width:120px;max-width:150px;">
+                ${p.logo ? `<img src="${p.logo}" alt="${p.name}" style="width:80px;height:80px;object-fit:contain;border-radius:8px;box-shadow:0 2px 8px #eee;margin-bottom:8px;">` : ''}
+                <div style="font-weight:600;text-align:center;">${p.name}</div>
+                ${p.website ? `<a href="${p.website}" target="_blank" style="color:#457B9D;font-size:0.95em;">Visit</a>` : ''}
+            </div>
+        `).join('');
+    }
+    </script>
+
+    <!-- Floating CTA -->
+    <div class="floating-cta" title="Contact Us">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <style>
+            footer {
+                background: var(--dark);
+                color: var(--white);
+                padding: 70px 0 25px;
+                margin-top: 60px;
+            }
+            .footer-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 40px;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 40px;
+            }
+            .footer-logo {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: var(--white);
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 18px;
+            }
+            .footer-logo i {
+                font-size: 1.7rem;
+                margin-right: 10px;
+                color: var(--primary-red);
+                vertical-align: middle;
+            }
+            .footer-logo img {
+                height: 38px;
+                width: auto;
+                border-radius: 50%;
+                margin-right: 10px;
+                object-fit: cover;
+            }
+            .footer-about { opacity: 0.85; margin-bottom: 18px;}
+            .footer-social { display: flex; gap: 12px;}
+            .footer-social a {
+                width: 36px; height: 36px;
+                border-radius: 50%;
+                background: rgba(255,255,255,0.1);
+                color: var(--white);
+                display: flex; align-items: center; justify-content: center;
+                transition: all 0.3s;
+                font-size: 1.1rem;
+            }
+            .footer-social a:hover {
+                background: var(--primary);
+                color: #fff;
+                transform: translateY(-4px);
+            }
+            .footer-links { list-style: none; padding: 0;}
+            .footer-links li { margin-bottom: 12px;}
+            .footer-links a {
+                color: var(--white);
+                opacity: 0.8;
+                text-decoration: none;
+                transition: color 0.3s, opacity 0.3s;
+            }
+            .footer-links a:hover {
+                opacity: 1;
+                color: var(--primary);
+            }
+            .footer-container h3 {
+                color: var(--white);
+                font-size: 1.15rem;
+                font-weight: 700;
+                margin-bottom: 12px;
+                position: relative;
+                display: inline-block;
+            }
+            .footer-container h3::after {
+                content: '';
+                display: block;
+                width: 50px;
+                height: 3px;
+                background: var(--primary);
+                margin-top: 6px;
+                border-radius: 2px;
+            }
+            .footer-contact p {
+                margin-bottom: 10px;
+                display: flex;
+                align-items: flex-start;
+                gap: 8px;
+                opacity: 0.8;
+                font-size: 0.97rem;
+            }
+            .footer-contact i { color: var(--primary);}
+            .copyright {
+                text-align: center;
+                margin-top: 40px;
+                padding-top: 18px;
+                border-top: 1px solid rgba(255,255,255,0.1);
+                opacity: 0.7;
+                font-size: 0.97rem;
+            }
+            @media (max-width: 900px) {
+                .footer-container { padding: 0 18px;}
+            }
+            @media (max-width: 600px) {
+                .footer-container { grid-template-columns: 1fr;}
+            }
+        </style>
+        <div class="footer-container">
+            <div>
+                <div class="footer-logo">
+                    <img src="logo.jpeg" alt="Safe Home Africa Logo" style="height:38px;width:auto;border-radius:50%;margin-right:10px;">
+                    <span>SAFE HOME AFRICA</span>
+                </div>
+                <p class="footer-about">A refugee youth-led organization serving Nyumanzi Settlement through health, empowerment and protection programs since 2022.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="programs.html">Our Programs</a></li>
+                    <li><a href="impact.html">Impact Stories</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="team.html">Meet The Team</a></li>
+                    <li><a href="contact.html">Get Involved</a></li>
+                   <a href="policy.html" target="_blank" rel="noopener"><strong>Policy</strong></a>
+                </ul>
+            </div>
+            <div>
+                <h3>Program Areas</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Mental Health Support</a></li>
+                    <li><a href="#">Youth Empowerment</a></li>
+                    <li><a href="#">Child Protection</a></li>
+                    <li><a href="#">Health Promotion</a></li>
+                    <li><a href="#">Livelihood Programs</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Contact Us</h3>
+                <div class="footer-contact">
+                    <p><i class="fas fa-map-marker-alt"></i> P.O. BOX 530078, Nyumanzi Refugee Settlement, Adjumani District, Uganda</p>
+                    <p><i class="fas fa-phone-alt"></i> +256 775 480 844</p>
+                    <p><i class="fas fa-envelope"></i> safehomeafrica@gmail.com</p>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Safe Home Africa. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.querySelector('i').classList.toggle('fa-times');
+        });
+        // Floating CTA
+        const floatingCta = document.querySelector('.floating-cta');
+        if (floatingCta) {
+            floatingCta.addEventListener('click', () => {
+                window.location.href = 'contact.html';
+            });
+        }
+        // Hero Slider
+        const heroImages = document.querySelectorAll('.hero-bg-img');
+        let currentHero = 0;
+        setInterval(() => {
+            heroImages[currentHero].classList.remove('active');
+            currentHero = (currentHero + 1) % heroImages.length;
+            heroImages[currentHero].classList.add('active');
+        }, 5000);
+    </script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const statNumbers = document.querySelectorAll('.stat-number');
+  statNumbers.forEach(el => {
+    const target = +el.textContent.replace(/\D/g, '');
+    let count = 0;
+    const increment = Math.ceil(target / 100);
+    const update = () => {
+      count += increment;
+      if (count > target) count = target;
+      el.textContent = count.toLocaleString() + (el.textContent.includes('+') ? '+' : '');
+      if (count < target) requestAnimationFrame(update);
+    };
+    update();
+  });
+});
+</script>
+<button id="backToTop" style="display:none;position:fixed;bottom:90px;right:30px;background:var(--primary);color:#fff;border:none;border-radius:50%;width:50px;height:50px;font-size:1.5rem;z-index:1000;cursor:pointer;">
+    <i class="fas fa-arrow-up"></i>
+</button>
+<script>
+window.addEventListener('scroll', () => {
+    document.getElementById('backToTop').style.display = window.scrollY > 300 ? 'block' : 'none';
+});
+document.getElementById('backToTop').onclick = () => window.scrollTo({top:0,behavior:'smooth'});
+</script>
+</body>
+</html>

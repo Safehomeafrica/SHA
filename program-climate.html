@@ -1,0 +1,446 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Change Program | Safe Home Africa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: #F5F5F5;
+            color: #212121;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+            padding: 0.5rem 0;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #E63946;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo img {
+            height: 44px;
+            width: 44px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            display: block;
+            padding: 10px 0;
+            color: #212121;
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            font-size: 1.08rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+        }
+        .nav-links a.active,
+        .nav-links a:hover {
+            color: #E63946;
+        }
+        .nav-links a.active::after,
+        .nav-links a:hover:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #E63946;
+            transition: all 0.3s cubic-bezier(.4,2,.6,1);
+        }
+        @media (max-width: 800px) {
+            .nav-container { padding: 0 8px; }
+            .nav-links { gap: 18px; }
+        }
+        .hero-section {
+            height: 45vh;
+            min-height: 220px;
+            background: linear-gradient(120deg, rgba(69,123,157,0.85) 0%, rgba(230,57,70,0.85) 100%), url('images/HERO SECTION images/HERO_PIC2.avif') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            position: relative;
+        }
+        .hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(241,250,238,0.13);
+            border-radius: 18px;
+            padding: 32px 24px;
+            box-shadow: 0 2px 12px rgba(69,123,157,0.08);
+        }
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+        }
+        .hero-content p {
+            font-size: 1.18rem;
+            opacity: 0.97;
+            margin-bottom: 1.5rem;
+        }
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .section-bg {
+            background: linear-gradient(120deg, #eaf6f6 0%, #F5F5F5 100%);
+            border-radius: 18px;
+            box-shadow: 0 2px 12px rgba(69,123,157,0.06);
+            margin-bottom: 32px;
+            padding: 32px 24px;
+        }
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-top: 18px;
+        }
+        .feature-item {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 1px 6px rgba(69,123,157,0.08);
+            padding: 18px 14px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .feature-item i {
+            font-size: 1.5rem;
+            color: #E63946;
+            margin-top: 2px;
+        }
+        .gallery-scroll {
+            display: flex;
+            gap: 22px;
+            overflow-x: auto;
+            padding: 18px 0;
+            margin-bottom: 18px;
+        }
+        .gallery-card {
+            min-width: 240px;
+            max-width: 260px;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 2px 8px rgba(69,123,157,0.08);
+            overflow: hidden;
+            position: relative;
+        }
+        .gallery-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
+        }
+        .gallery-card .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(69,123,157,0.85);
+            color: #fff;
+            padding: 8px 12px;
+            font-size: 1rem;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 40px 20px 10px 20px;
+            gap: 30px;
+        }
+        .footer-col {
+            flex: 1;
+            min-width: 220px;
+            margin-right: 20px;
+        }
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .footer-logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.13);
+        }
+        .footer-logo span {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #E63946;
+        }
+        .footer-about {
+            margin-bottom: 20px;
+        }
+        .footer-about p {
+            font-size: 0.9rem;
+            color: #F5F5F5;
+            margin: 0 0 10px 0;
+        }
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+        .footer-social a {
+            color: #fff;
+            font-size: 1.2rem;
+            transition: color 0.2s;
+        }
+        .footer-social a:hover {
+            color: #E63946;
+        }
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover {
+            color: #E63946;
+        }
+        .footer-contact {
+            font-size: 0.9rem;
+            color: #F5F5F5;
+        }
+        .footer-contact p {
+            margin: 0 0 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .footer-contact i {
+            color: #E63946;
+        }
+        footer {
+            background: #212121;
+            color: #fff;
+            padding: 0;
+            margin-top: 60px;
+            font-size: 1rem;
+        }
+        .copyright {
+            text-align: center;
+            background: #212121;
+            color: #F1FAEE;
+            padding: 12px 0 8px 0;
+            font-size: 0.98rem;
+            margin-top: 10px;
+        }
+        @media (max-width: 800px) {
+            .footer-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 18px;
+            }
+            .footer-col {
+                margin-right: 0;
+                width: 100%;
+            }
+            .footer-logo {
+                justify-content: flex-start;
+            }
+            .footer-social {
+                justify-content: flex-start;
+            }
+            .footer-links {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.jpeg" alt="Safe Home Africa Logo">
+                <span class="logo-text">Safe Home Africa</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="programs.html" class="active">Programs</a></li>
+                <li><a href="impact.html">Impact</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1 style="color:#E63946;">Climate Change Program</h1>
+            <p>Promoting sustainable farming techniques to enhance food security and adapt to climate change.</p>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <section class="section-bg">
+            <h2 style="color:#E63946;"><i class="fas fa-leaf"></i> Program Overview</h2>
+            <p>SHA’s Climate Change Program integrates climate advocacy and smart agriculture to build resilient, food-secure communities. We empower youth and families to adopt sustainable practices and reduce environmental impact.</p>
+            <div class="feature-list">
+                <div class="feature-item"><i class="fas fa-seedling"></i> Drought-resistant crops</div>
+                <div class="feature-item"><i class="fas fa-tint"></i> Water conservation techniques</div>
+                <div class="feature-item"><i class="fas fa-tree"></i> Agroforestry initiatives</div>
+                <div class="feature-item"><i class="fas fa-fire"></i> Energy-efficient cooking solutions</div>
+                <div class="feature-item"><i class="fas fa-bullhorn"></i> Climate change awareness campaigns</div>
+                <div class="feature-item"><i class="fas fa-users"></i> Youth involvement in climate-smart agriculture</div>
+                <div class="feature-item"><i class="fas fa-hands-helping"></i> Support for eco-friendly livelihood programs</div>
+                <div class="feature-item"><i class="fas fa-recycle"></i> Waste management and recycling education</div>
+                <div class="feature-item"><i class="fas fa-solar-panel"></i> Solar energy and renewable solutions</div>
+                <div class="feature-item"><i class="fas fa-water"></i> Rainwater harvesting projects</div>
+                <div class="feature-item"><i class="fas fa-leaf"></i> Organic farming and composting workshops</div>
+                <div class="feature-item"><i class="fas fa-globe-africa"></i> Community tree planting drives</div>
+                <div class="feature-item"><i class="fas fa-school"></i> School-based climate clubs</div>
+            </div>
+        </section>
+        <section class="section-bg">
+            <h2 style="color:#E63946;"><i class="fas fa-bullseye"></i> Strategic Goals</h2>
+            <div class="feature-list">
+                <div class="feature-item"><i class="fas fa-shield-alt"></i> Build resilience among refugee communities</div>
+                <div class="feature-item"><i class="fas fa-apple-alt"></i> Reduce cases of food insecurity through eco-friendly farming techniques</div>
+                <div class="feature-item"><i class="fas fa-leaf"></i> Promote household food security and poverty reduction</div>
+                <div class="feature-item"><i class="fas fa-hands"></i> Foster youth leadership in climate action</div>
+                <div class="feature-item"><i class="fas fa-lightbulb"></i> Encourage innovation in sustainable agriculture</div>
+                <div class="feature-item"><i class="fas fa-hand-holding-water"></i> Expand access to clean water and sanitation</div>
+            </div>
+        </section>
+        <section class="section-bg">
+            <h2 style="color:#E63946;"><i class="fas fa-chart-bar"></i> Program Statistics</h2>
+            <div class="feature-list">
+                <div class="feature-item"><i class="fas fa-home"></i> 50 Households reached</div>
+                <div class="feature-item"><i class="fas fa-tractor"></i> 3 Demonstration Farms</div>
+                <div class="feature-item"><i class="fas fa-users"></i> 120+ youth trained in climate-smart agriculture</div>
+                <div class="feature-item"><i class="fas fa-tree"></i> 500+ trees planted in the last year</div>
+                <div class="feature-item"><i class="fas fa-water"></i> 10 rainwater harvesting systems installed</div>
+            </div>
+        </section>
+        <section class="section-bg">
+            <h2 style="color:#E63946;"><i class="fas fa-images"></i> Photo Gallery</h2>
+            <div class="gallery-scroll">
+                <div class="gallery-card">
+                    <img src="images/Program images/CCASA.avif" alt="Climate Smart Agriculture">
+                    <div class="caption"><i class="fas fa-seedling"></i> Climate Smart Agriculture</div>
+                </div>
+                <div class="gallery-card">
+                    <img src="images/Program images/CBCP.avif" alt="Community Sensitization">
+                    <div class="caption"><i class="fas fa-bullhorn"></i> Community Sensitization</div>
+                </div>
+                <div class="gallery-card">
+                    <img src="images/HERO SECTION images/HERO_PIC2.avif" alt="Demonstration Farm">
+                    <div class="caption"><i class="fas fa-tractor"></i> Demonstration Farm</div>
+                </div>
+                <div class="gallery-card">
+                    <img src="images/Program images/MHPSS.avif" alt="Tree Planting Drive">
+                    <div class="caption"><i class="fas fa-tree"></i> Tree Planting Drive</div>
+                </div>
+                <div class="gallery-card">
+                    <img src="images/Program images/SRHAY.avif" alt="Youth Climate Club">
+                    <div class="caption"><i class="fas fa-users"></i> Youth Climate Club</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <img src="logo.jpeg" alt="Safe Home Africa Logo">
+                    <span>Safe Home Africa</span>
+                </div>
+                <div class="footer-about">
+                    <p>Empowering refugee communities in Nyumanzi Settlement through comprehensive programs across six thematic areas.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="programs.html">Our Programs</a></li>
+                    <li><a href="impact.html">Impact Stories</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <a href="policy.html" target="_blank" rel="noopener"><strong>Policy</strong></a>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Thematic Areas</h3>
+                <ul class="footer-links">
+                    <li><a href="program-mental-health.html">Mental Health</a></li>
+                    <li><a href="program-child-protection.html">Child Protection</a></li>
+                    <li><a href="program-peace-building.html">Peace Building</a></li>
+                    <li><a href="program-livelihoods.html">Livelihoods</a></li>
+                    <li><a href="program-education.html">Education</a></li>
+                    <li><a href="program-climate.html">Climate Change</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <div class="footer-contact">
+                    <p><i class="fas fa-map-marker-alt"></i> Nyumanzi Refugee Settlement, Adjumani District, Uganda</p>
+                    <p><i class="fas fa-phone-alt"></i> +256 700 123456</p>
+                    <p><i class="fas fa-envelope"></i> info@safehomeafrica.org</p>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Safe Home Africa. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

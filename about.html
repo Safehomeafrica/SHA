@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | SAFE HOME AFRICA - Refugee-Led Community Transformation</title>
+    <meta name="description" content="Learn about Safe Home Africa's mission to empower refugee youth through health care and psychosocial services in Nyumanzi Settlement, Uganda.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-red: #E63946;
+            --dark-red: #B71C1C;
+            --light-red: #FFCDD2;
+            --white: #FFFFFF;
+            --light-grey: #F5F5F5;
+            --medium-grey: #E0E0E0;
+            --dark-grey: #424242;
+            --black: #212121;
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        .scrolled {
+            padding: 0.8rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            color: var(--primary-red);
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .logo:hover {
+            opacity: 0.9;
+        }
+        
+        .logo img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            margin-right: 12px;
+            object-fit: cover;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--dark-grey);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-red);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover:after,
+        .nav-links a.active:after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-red);
+        }
+        
+        .admin-link {
+            background-color: var(--primary-red);
+            color: white !important;
+            padding: 0.6rem 1.2rem !important;
+            border-radius: 30px;
+            transition: var(--transition);
+        }
+        
+        .admin-link:hover {
+            background-color: var(--dark-red);
+        }
+        
+        .admin-link:after {
+            display: none !important;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--dark-grey);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .mobile-menu:hover {
+            color: var(--primary-red);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 800px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            margin-top: 80px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+            color: var(--white);
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-btn {
+            display: inline-block;
+            background-color: var(--primary-red);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border: 2px solid var(--primary-red);
+        }
+        
+        .hero-btn:hover {
+            background-color: transparent;
+            color: white;
+        }
+        
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+        
+        /* About Content */
+        .about-section {
+            padding: 6rem 2rem;
+            background-color: var(--white);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-red);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            font-weight: 600;
+        }
+        
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-red);
+        }
+        
+        .section-header p {
+            color: var(--dark-grey);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--black);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .about-text p {
+            color: var(--dark-grey);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .highlight-box {
+            background-color: var(--light-grey);
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary-red);
+            margin: 2rem 0;
+            font-style: italic;
+        }
+        
+        .mission-vision {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .mv-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--primary-red);
+            transition: var(--transition);
+        }
+        
+        .mv-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .mv-card i {
+            font-size: 2.2rem;
+            color: var(--primary-red);
+            margin-bottom: 1.5rem;
+        }
+        
+        .mv-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+            font-weight: 600;
+        }
+        
+        .mv-card p {
+            color: var(--dark-grey);
+            line-height: 1.7;
+        }
+        
+        .about-image {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.03);
+        }
+        
+        .floating-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background-color: var(--primary-red);
+            color: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            max-width: 250px;
+            z-index: 2;
+        }
+        
+        .floating-badge h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .floating-badge p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* History Timeline */
+        .history-section {
+            padding: 6rem 2rem;
+            background-color: var(--light-grey);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background-color: var(--primary-red);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            width: 50%;
+            padding: 0 40px;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--primary-red);
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--primary-red);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .timeline-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-red);
+        }
+        
+        .timeline-content .date {
+            display: inline-block;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+            color: var(--dark-grey);
+            font-size: 0.9rem;
+        }
+        
+        .timeline-content p {
+            color: var(--dark-grey);
+            line-height: 1.7;
+        }
+        
+        /* Values Section */
+        .values-section {
+            padding: 6rem 2rem;
+            background-color: var(--white);
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .value-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            border-top: 4px solid var(--primary-red);
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .value-card i {
+            font-size: 2.2rem;
+            color: var(--primary-red);
+            margin-bottom: 1.5rem;
+        }
+        
+        .value-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+            font-weight: 600;
+        }
+        
+        .value-card p {
+            color: var(--dark-grey);
+            line-height: 1.6;
+        }
+        
+        /* Team Preview */
+        .team-section {
+            padding: 6rem 2rem;
+            background-color: var(--light-grey);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .team-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .team-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .team-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .team-card:hover .team-img img {
+            transform: scale(1.05);
+        }
+        
+        .team-info {
+            padding: 1.5rem;
+        }
+        
+        .team-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+            color: var(--black);
+        }
+        
+        .team-info p {
+            color: var(--primary-red);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+        
+        .team-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            background-color: var(--light-grey);
+            color: var(--dark-grey);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .team-social a:hover {
+            background-color: var(--primary-red);
+            color: white;
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+            color: white;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .stat-item {
+            padding: 1.5rem;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary-red);
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Partners Section */
+        .partners-section {
+            padding: 6rem 2rem;
+            background-color: var(--white);
+        }
+        
+        .partners-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .partner-logo {
+            max-width: 150px;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+        
+        .partner-logo:hover {
+            filter: grayscale(0);
+            opacity: 1;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 2rem;
+            background-color: var(--primary-red);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-content p {
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            min-width: 200px;
+        }
+        
+        .cta-btn-primary {
+            background-color: white;
+            color: var(--primary-red);
+            border: 2px solid white;
+        }
+        
+        .cta-btn-primary:hover {
+            background-color: transparent;
+            color: white;
+        }
+        
+        .cta-btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .cta-btn-secondary:hover {
+            background-color: white;
+            color: var(--primary-red);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-grey);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+        
+        .footer-about {
+            padding-right: 2rem;
+        }
+        
+        .footer-logo {
+            color: var(--white);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-logo img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            margin-right: 12px;
+            object-fit: cover;
+            
+        }
+        
+        .footer-about p {
+            color: var(--medium-grey);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            color: var(--white);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-social a:hover {
+            background-color: var(--primary-red);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .footer-links h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-red);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--medium-grey);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-red);
+            padding-left: 5px;
+        }
+        
+        .footer-contact li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--primary-red);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--medium-grey);
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .mission-vision {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding: 0 30px 0 70px;
+                left: 0 !important;
+            }
+            
+            .timeline:before {
+                left: 30px;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-dot,
+            .timeline-item:nth-child(even) .timeline-dot {
+                left: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                background-color: var(--white);
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                box-shadow: var(--shadow);
+                transform: translateY(-150%);
+                transition: transform 0.4s;
+                gap: 1.5rem;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+            }
+            
+            .nav-links li {
+                margin: 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-btn {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            section {
+                padding: 4rem 1.5rem;
+            }
+            
+            .hero {
+                padding: 0 1.5rem;
+                min-height: 700px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .nav-container {
+                padding: 1rem 1.5rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-about {
+                padding-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo"> <img src="logo.jpeg" alt="Safe Home Africa Logo" style="height:38px;width:auto;border-radius:50%;margin-right:10px;">SAFE HOME AFRICA</a>
+            <div class="mobile-menu">☰</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="champion-of-change.html">Champion of Change</a></li>
+                <li><a href="impact.html">Impact</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="admin-login.html" class="admin-link"><i class="fas fa-lock"></i> Admin</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Our Story of Resilience and Hope</h1>
+            <p>Refugee youth leading community transformation through innovative health and psychosocial services in Nyumanzi Settlement, Uganda</p>
+            <a href="#history" class="hero-btn">Explore Our Journey</a>
+        </div>
+        <div class="scroll-down" onclick="document.getElementById('who-we-are').scrollIntoView({behavior: 'smooth'})">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="about-section" id="who-we-are">
+        <div class="container">
+            <div class="section-header">
+                <h2>Who We Are</h2>
+                <p>A refugee-led organization creating sustainable solutions for community healing and empowerment</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Our Identity and Purpose</h3>
+                    <p>Safe Home Africa (SHA) is an independent, non-governmental and non-profit community-based organization established by refugee youth with diverse expertise to mobilize, empower, and transform communities through comprehensive health care and psychosocial services.</p>
+                    
+                    <div class="highlight-box">
+                        "We believe in the power of refugee-led solutions to create sustainable change in our communities."
+                    </div>
+                    
+                    <p>Registered with Adjumani District Local Government (Registration No: DZA/1297/23), we operate primarily in Nyumanzi Refugee Settlement with programs focused on mental health support, child protection, youth empowerment, and health promotion. Our approach combines traditional community knowledge with evidence-based practices.</p>
+                    
+                    <div class="mission-vision">
+                        <div class="mv-card">
+                            <i class="fas fa-bullseye"></i>
+                            <h3>Our Mission</h3>
+                            <p>Safe Home Africa works to protect and  support refugees youth by delivering integrated programs in  protection sector, peacebuilding, education, climate resilience, community health, and sustainable livelihoods supporting their journey toward safety, dignity, and self-reliance.</p>
+                        </div>
+                        <div class="mv-card
+                                                <div class="mv-card">
+                            <i class="fas fa-eye"></i>
+                            <h3>Our Vision</h3>
+                            <p>We envision a home and peaceful Africa where refugees especially children and youth thrive in safe, healthy, and empowered communities that are resilient to conflict, poverty, and climate change.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Safe Home Africa team working with community">
+                    <div class="floating-badge">
+                        <h4>Since 2023</h4>
+                        <p>Officially registered and serving the Nyumanzi community</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Timeline -->
+    <section class="history-section" id="history">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Journey</h2>
+                <p>From grassroots initiative to a registered refugee-led organization driving community transformation</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Community Awakening</h3>
+                        <span class="date">2022</span>
+                        <p>Refugee-minded youth in Nyumanzi Settlement began informal support groups to address mental health, trauma, and youth empowerment—laying the foundation for Safe Home Africa (SHA).</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Organizational Registration</h3>
+                        <span class="date">June 30, 2023</span>
+                        <p>SHA was officially registered as a Community-Based Refugee-Led Organization with Adjumani District Local Government (Reg. No: DZA/1297/23).</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Suicide Prevention Campaign</h3>
+                        <span class="date">Mid 2023</span>
+                        <p>Trained 120 youth—including suicide survivors—on suicide response and psychosocial support. Youth Champions of Change were mobilized to identify and support at-risk individuals.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Health Education & SRHR Advocacy</h3>
+                        <span class="date">August 2023</span>
+                        <p>Partnered with St. Elijah Medical Clinic to deliver health education and testing to over 250 individuals. Formed a Champion of Change girls’ group to lead SRHR advocacy in Nyumanzi Settlement.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Youth Peace Conferences</h3>
+                        <span class="date">Late 2023</span>
+                        <p>Hosted peacebuilding conferences with LWF Uganda under the PRM Project, engaging 150+ youth and stakeholders to promote peaceful coexistence and gender equity.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>UNHCR Delegation Visit</h3>
+                        <span class="date">2023</span>
+                        <p>SHA’s Executive Director presented the organization’s mission to UNHCR Deputy Country Director and senior staff during an official assessment of Refugee-Led Organizations in Adjumani.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Global Youth Engagement</h3>
+                        <span class="date">2023</span>
+                        <p>Participated in Refugee International Day and joined a virtual Global Youth Peacebuilding Workshop hosted by UNHCR, connecting SHA youth with peers worldwide.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Program Expansion</h3>
+                        <span class="date">2024–Present</span>
+                        <p>SHA expanded its scope to include child protection, livelihoods, climate-smart agriculture, and education for teenage mothers—strengthening its impact across Adjumani District.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Core Values</h2>
+                <p>The principles that guide our work and decision-making</p>
+            </div>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Compassion</h3>
+                    <p>We approach every individual with empathy, dignity, and respect, recognizing the unique challenges faced by displaced communities.</p>
+                </div>
+                
+                <div class="value-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Community</h3>
+                    <p>We believe in the power of collective action and the wisdom of lived experience in creating sustainable solutions.</p>
+                </div>
+                
+                <div class="value-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Innovation</h3>
+                    <p>We continuously seek creative, context-appropriate approaches to address complex challenges in resource-limited settings.</p>
+                </div>
+                
+                <div class="value-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Integrity</h3>
+                    <p>We maintain the highest ethical standards, ensuring transparency and accountability in all our operations.</p>
+                </div>
+                
+                <div class="value-card">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h3>Service</h3>
+                    <p>We are committed to putting the needs of our community first, prioritizing those most vulnerable.</p>
+                </div>
+                
+                <div class="value-card">
+                    <i class="fas fa-seedling"></i>
+                    <h3>Sustainability</h3>
+                    <p>We invest in capacity building and local leadership to create lasting impact beyond our direct interventions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Preview -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Meet Our Leadership</h2>
+                <p>The dedicated refugee youth driving our mission forward</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Executive Director">
+                    </div>
+                    <div class="team-info">
+                        <h3>Sarah Deng</h3>
+                        <p>Executive Director</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Programs Manager">
+                    </div>
+                    <div class="team-info">
+                        <h3>James Lual</h3>
+                        <p>Programs Manager</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Mental Health Coordinator">
+                    </div>
+                    <div class="team-info">
+                        <h3>Mary Achol</h3>
+                        <p>Mental Health Coordinator</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Community Outreach Lead">
+                    </div>
+                    <div class="team-info">
+                        <h3>David Kuol</h3>
+                        <p>Community Outreach Lead</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Impact in Numbers</h2>
+                <p>Measuring our progress in serving the Nyumanzi community</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">1,200+</div>
+                    <div class="stat-label">Youth Reached</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number">45</div>
+                    <div class="stat-label">Trained Peer Counselors</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number">300+</div>
+                    <div class="stat-label">Mental Health Sessions</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Community Partnerships</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Refugee-Led Team</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Partners</h2>
+                <p>Collaborating for greater impact in Nyumanzi Settlement</p>
+            </div>
+            
+            <div class="partners-grid">
+            <img src="C:\Users\user\Downloads\UNHCR.png" alt="UNHCR" class="partner-logo">
+            <img src="C:\Users\user\Downloads\YEF.png" alt="YEF" class="partner-logo">
+            <img src="C:\Users\user\Downloads\RHU.png" alt="RHU" class="partner-logo">
+            <img src="C:\Users\user\Downloads\LWF.png" alt="LWF" class="partner-logo">
+            <img src="C:\Users\user\Downloads\RWA.jpeg" alt="RWA" class="partner-logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Join Us in Creating Change</h2>
+            <p>Whether you're looking to volunteer, partner with us, or support our work financially, your involvement makes a difference in the lives of refugee youth.</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="cta-btn cta-btn-primary">Get Involved</a>
+                <a href="donate.html" class="cta-btn cta-btn-secondary">Donate Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-about">
+                <div class="footer-logo"> <img src="logo.jpeg" alt="Safe Home Africa Logo" style="height:38px;width:auto;border-radius:50%;margin-right:10px;">SAFE HOME AFRICA</div>
+                <p>A refugee-led organization creating sustainable solutions for community healing and empowerment in Nyumanzi Settlement, Uganda.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="programs.html">Our Programs</a></li>
+                    <li><a href="impact.html">Impact Stories</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                   <a href="policy.html" target="_blank" rel="noopener"><strong>Policy</strong></a>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Programs</h3>
+                <ul>
+                    <li><a href="#">Mental Health Support</a></li>
+                    <li><a href="#">Youth Empowerment</a></li>
+                    <li><a href="#">Child Protection</a></li>
+                    <li><a href="#">Community Health</a></li>
+                    <li><a href="#">Skills Training</a></li>
+                    <li><a href="#">Advocacy</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links footer-contact">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Nyumanzi Refugee Settlement, Adjumani District, Uganda</li>
+                    <li><i class="fas fa-phone"></i> +256 752 123 456</li>
+                    <li><i class="fas fa-envelope"></i> info@safehomeafrica.org</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 Safe Home Africa. All Rights Reserved. | Registered Community-Based Organization (DZA/1297/23)</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+        
+        // Header Scroll Effect
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        mobileMenu.textContent = '☰';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

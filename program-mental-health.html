@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mental Health & Psychosocial Support | Safe Home Africa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <style>
+        :root {
+            --primary-red: #E63946;
+            --primary: #E63946;
+            --secondary: #457B9D;
+            --accent: #F1FAEE;
+            --dark: #212121;
+            --light: #F5F5F5;
+            --dark-red: #B71C1C;
+            --light-red: #FFCDD2;
+            --white: #FFFFFF;
+            --light-grey: #F5F5F5;
+            --shadow: 0 5px 15px rgba(0,0,0,0.07);
+            --transition: all 0.3s cubic-bezier(.4,2,.6,1);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        body {
+            background: var(--light);
+            color: var(--dark);
+        }
+        /* Header */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            color: var(--primary-red);
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+        .logo img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            margin-right: 12px;
+            object-fit: cover;
+        }
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .mobile-menu:hover {
+            color: var(--primary-red);
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-red);
+            transition: var(--transition);
+        }
+        .nav-links a:hover:after,
+        .nav-links a.active:after {
+            width: 100%;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-red);
+        }
+        .admin-link {
+            background-color: var(--primary-red);
+            color: white !important;
+            padding: 0.6rem 1.2rem !important;
+            border-radius: 30px;
+            transition: var(--transition);
+        }
+        .admin-link:hover {
+            background-color: var(--dark-red);
+        }
+        .admin-link:after {
+            display: none !important;
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                background-color: var(--white);
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                box-shadow: var(--shadow);
+                transform: translateY(-150%);
+                transition: transform 0.4s;
+                gap: 1.5rem;
+            }
+            .nav-links.active {
+                transform: translateY(0);
+            }
+            .nav-links li {
+                margin: 0;
+            }
+            .mobile-menu {
+                display: block;
+            }
+        }
+        /* Hero Section */
+        .programs-hero {
+            height: 60vh;
+            min-height: 400px;
+            background: linear-gradient(rgba(69,123,157,0.7), rgba(230,57,70,0.7)), url('https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 80px;
+            position: relative;
+        }
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+            z-index: 2;
+        }
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+        }
+        .btn:hover {
+            background-color: transparent;
+            color: var(--primary);
+        }
+        /* Main Content */
+        .container {
+            max-width: 1100px;
+            margin: 3.5rem auto 0 auto;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+            padding: 2.5rem 2.5rem 2rem 2.5rem;
+            position: relative;
+        }
+        .section-title {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
+            border-left: 5px solid var(--secondary);
+            padding-left: 0.7rem;
+            letter-spacing: 1px;
+        }
+        .about-flex {
+            display: flex;
+            gap: 2.5rem;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+        .about-img {
+            flex: 1 1 320px;
+            max-width: 350px;
+            border-radius: 12px;
+            box-shadow: 0 4px 18px rgba(69,123,157,0.10);
+            object-fit: cover;
+            min-height: 220px;
+        }
+        .about-content {
+            flex: 2 1 400px;
+        }
+        .about-content h3 {
+            color: var(--secondary);
+            margin-top: 0;
+            margin-bottom: 0.7rem;
+            font-size: 1.3rem;
+        }
+        .about-content ul {
+            margin: 1rem 0 0 1.5rem;
+        }
+        .about-highlights {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .highlight {
+            background: var(--accent);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            flex: 1 1 180px;
+        }
+        .highlight h4 {
+            color: var(--primary);
+            margin: 0 0 0.3rem 0;
+            font-size: 1.2rem;
+        }
+        .highlight p {
+            margin: 0;
+            color: var(--dark);
+            font-size: 1rem;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .feature-card {
+            background: var(--accent);
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            text-align: center;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .feature-card:hover {
+            box-shadow: 0 8px 24px rgba(69,123,157,0.08);
+            transform: translateY(-4px) scale(1.03);
+        }
+        .feature-card i {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+        .feature-card h4 {
+            margin: 0.5rem 0 0.5rem 0;
+            color: var(--primary);
+        }
+        .feature-card p {
+            margin: 0;
+            color: var(--dark);
+        }
+        /* Impact Section */
+        .impact-section {
+            background-color: var(--white);
+            padding: 4rem 2rem 2rem 2rem;
+            margin-top: 3rem;
+        }
+        .impact-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .impact-card {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--light);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        .impact-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        .impact-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        /* News Section */
+        .news-section {
+            margin-top: 3rem;
+        }
+        .news-list {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        }
+        .news-card {
+            background: var(--accent);
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s;
+        }
+        .news-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 8px 24px rgba(69,123,157,0.08);
+        }
+        .news-media {
+            width: 100%;
+            height: 200px;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .news-media img, .news-media video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .news-content {
+            padding: 1.2rem 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .news-card h4 {
+            margin: 0 0 0.5rem 0;
+            color: var(--secondary);
+        }
+        .news-card p {
+            margin: 0;
+            color: var(--dark);
+        }
+        .news-date {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 0.5rem;
+        }
+        .news-tags {
+            margin-top: 0.8rem;
+        }
+        .news-tag {
+            display: inline-block;
+            background: var(--secondary);
+            color: #fff;
+            border-radius: 12px;
+            padding: 0.2rem 0.7rem;
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+        }
+        /* CTA Section */
+        .cta-section {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .cta-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.2rem;
+        }
+        .cta-section p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .btn-light {
+            background-color: var(--white);
+            color: var(--primary);
+            border-color: var(--white);
+        }
+        .btn-light:hover {
+            background-color: transparent;
+            color: var(--white);
+        }
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+            margin-top: 3rem;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+        }
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .footer-logo img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+        .footer-logo span {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .footer-about p {
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            color: var(--white);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .footer-social a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        .footer-links {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        .footer-links a {
+            color: var(--white);
+            opacity: 0.8;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        .footer-contact p {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+        .footer-contact i {
+            color: var(--primary);
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.6;
+        }
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .programs-hero {
+                height: 50vh;
+                min-height: 300px;
+            }
+            .container { padding: 1rem; }
+            .about-flex { flex-direction: column; gap: 1.2rem; }
+            .features-grid { grid-template-columns: 1fr; }
+            .impact-grid { grid-template-columns: 1fr; }
+            .news-list { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 576px) {
+            .hero-content h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.jpeg" alt="Safe Home Africa Logo">
+                <span class="logo-text">Safe Home Africa</span>
+            </a>
+            <div class="mobile-menu" onclick="toggleMenu()">☰</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="programs.html" class="active">Programs</a></li>
+                <li><a href="impact.html">Impact</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="admin-login.html" class="admin-link"><i class="fas fa-lock"></i> Admin</a></li>
+            </ul>
+        </div>
+    </header>
+    <script>
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+    </script>
+    <!-- Hero Section -->
+    <section class="programs-hero">
+        <div class="hero-content">
+            <h1>Mental Health & Psychosocial Support</h1>
+            <p>
+                Comprehensive counseling and trauma healing services for refugees affected by conflict and displacement. We foster resilience, hope, and well-being in Nyumanzi and beyond.
+            </p>
+            <a href="#about" class="btn">Learn More</a>
+        </div>
+    </section>
+    <main class="container" id="about">
+        <section class="program-details">
+            <div class="section-title">About This Program</div>
+            <div class="about-flex">
+                <img src="images/Program images/MHPSS.avif" alt="Mental Health Support" class="about-img">
+                <div class="about-content">
+                    <h3>Empowering Minds, Restoring Hope</h3>
+                    <p>
+                        Our Mental Health & Psychosocial Support (MHPSS) program is dedicated to providing holistic support for refugees and vulnerable populations. We offer trauma-informed care, promote community resilience, and work to reduce stigma around mental health.
+                    </p>
+                    <ul>
+                        <li>Individual and group counseling sessions</li>
+                        <li>Trauma healing workshops</li>
+                        <li>Peer support networks</li>
+                        <li>Referral system for specialized care</li>
+                        <li>Community-based psychosocial support and safe spaces</li>
+                        <li>Capacity building for local health workers and caregivers</li>
+                        <li>Awareness campaigns and mental health education</li>
+                        <li>Rapid response for trauma and crisis situations</li>
+                        <li>Specialized support for children, youth, and families</li>
+                    </ul>
+                    <div class="about-highlights">
+                        <div class="highlight">
+                            <h4><i class="fas fa-hands-helping"></i> 1,200+</h4>
+                            <p>Counseling Sessions</p>
+                        </div>
+                        <div class="highlight">
+                            <h4><i class="fas fa-user-md"></i> 30+</h4>
+                            <p>Trained Counselors</p>
+                        </div>
+                        <div class="highlight">
+                            <h4><i class="fas fa-users"></i> 500+</h4>
+                            <p>Children Supported</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-users"></i>
+                <h4>Group Therapy</h4>
+                <p>Weekly group sessions for trauma healing and peer support.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <h4>Training</h4>
+                <p>Capacity building for local caregivers and health workers.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-bullhorn"></i>
+                <h4>Awareness</h4>
+                <p>Community campaigns to reduce stigma and promote mental health.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-child"></i>
+                <h4>Child Support</h4>
+                <p>Specialized support for children and youth affected by trauma.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-heartbeat"></i>
+                <h4>Emergency Response</h4>
+                <p>Rapid intervention for individuals in crisis or trauma situations.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-hands-holding"></i>
+                <h4>Family Counseling</h4>
+                <p>Support for families to strengthen relationships and resilience.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-graduation-cap"></i>
+                <h4>Youth Empowerment</h4>
+                <p>Programs focused on youth leadership and mental wellness.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-globe-africa"></i>
+                <h4>Community Outreach</h4>
+                <p>Mobile teams reaching remote and underserved populations.</p>
+            </div>
+        </section>
+        <!-- Impact Section -->
+        <section class="impact-section">
+            <div class="impact-container">
+                <div class="section-title">Our Impact</div>
+                <div class="impact-grid">
+                    <div class="impact-card">
+                        <i class="fas fa-users"></i>
+                        <div class="impact-number">1,200+</div>
+                        <h3>Counseling Sessions</h3>
+                        <p>Providing psychosocial support to trauma survivors</p>
+                    </div>
+                    <div class="impact-card">
+                        <i class="fas fa-child"></i>
+                        <div class="impact-number">500+</div>
+                        <h3>Children Supported</h3>
+                        <p>Through our safeguarding and mental health initiatives</p>
+                    </div>
+                    <div class="impact-card">
+                        <i class="fas fa-hands-helping"></i>
+                        <div class="impact-number">30+</div>
+                        <h3>Trained Counselors</h3>
+                        <p>Delivering trauma-informed care in the community</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- News Section -->
+        <section class="news-section">
+            <div class="section-title">Latest News & Updates</div>
+            <div class="news-list">
+                <div class="news-card">
+                    <div class="news-media">
+                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="World Mental Health Day Event">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">Oct 10, 2024</div>
+                        <h4>World Mental Health Day Event</h4>
+                        <p>We hosted a community event with over 200 participants, raising awareness and providing free counseling sessions.</p>
+                        <div class="news-tags">
+                            <span class="news-tag">Event</span>
+                            <span class="news-tag">Awareness</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-media">
+                        <video controls poster="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80">
+                            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">Sep 25, 2024</div>
+                        <h4>New Counseling Center Opened</h4>
+                        <p>Our new center in Kakuma is now open, offering daily support to refugees and host community members.</p>
+                        <div class="news-tags">
+                            <span class="news-tag">Update</span>
+                            <span class="news-tag">Facility</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-media">
+                        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Training Session">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">Aug 15, 2024</div>
+                        <h4>Training for Community Health Workers</h4>
+                        <p>We conducted a 3-day intensive training for 30 local health workers on trauma-informed care.</p>
+                        <div class="news-tags">
+                            <span class="news-tag">Training</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more news cards as needed -->
+            </div>
+        </section>
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-container">
+                <h2>Support Mental Health in Refugee Communities</h2>
+                <p>Your partnership enables us to expand our mental health and psychosocial interventions in Nyumanzi and beyond.</p>
+                <div style="display: flex; gap: 1rem; justify-content: center;">
+                    <a href="contact.html" class="btn btn-light">Donate Now</a>
+                    <a href="contact.html" class="btn">Partner With Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <img src="logo.jpeg" alt="Safe Home Africa Logo">
+                    <span>Safe Home Africa</span>
+                </div>
+                <div class="footer-about">
+                    <p>Empowering refugee communities in Nyumanzi Settlement through comprehensive programs across six thematic areas.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="programs.html">Our Programs</a></li>
+                    <li><a href="impact.html">Impact Stories</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <a href="policy.html" target="_blank" rel="noopener"><strong>Policy</strong></a>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Thematic Areas</h3>
+                <ul class="footer-links">
+                    <li><a href="program-mental-health.html">Mental Health</a></li>
+                    <li><a href="program-child-protection.html">Child Protection</a></li>
+                    <li><a href="program-peace-building.html">Peace Building</a></li>
+                    <li><a href="program-livelihoods.html">Livelihoods</a></li>
+                    <li><a href="program-education.html">Education</a></li>
+                    <li><a href="program-climate.html">Climate Change</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <div class="footer-contact">
+                    <p><i class="fas fa-map-marker-alt"></i> Nyumanzi Refugee Settlement, Adjumani District, Uganda</p>
+                    <p><i class="fas fa-phone-alt"></i> +256 700 123456</p>
+                    <p><i class="fas fa-envelope"></i> info@safehomeafrica.org</p>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Safe Home Africa. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team | Safe Home Africa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #E63946;
+            --secondary: #457B9D;
+            --light: #F1FAEE;
+            --dark: #1D3557;
+            --accent: #A8DADC;
+            --white: #FFFFFF;
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo i {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover:after,
+        .nav-links a.active:after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* Team Hero */
+        .team-hero {
+            height: 50vh;
+            min-height: 400px;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        /* Team Section */
+        .team-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .section-header p {
+            color: var(--dark);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        /* Board Team */
+        .board-team {
+            margin-bottom: 5rem;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .team-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .team-image {
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .team-card:hover .team-image img {
+            transform: scale(1.05);
+        }
+        
+        .team-content {
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .team-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .team-content p.position {
+            color: var(--dark);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .team-content p.bio {
+            color: var(--dark);
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .team-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent);
+            color: var(--primary);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .team-social a:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        /* Full Team */
+        .full-team {
+            margin-top: 5rem;
+        }
+        
+        .department {
+            margin-bottom: 4rem;
+        }
+        
+        .department-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--accent);
+        }
+        
+        .department-header i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-right: 1rem;
+        }
+        
+        .department-header h3 {
+            font-size: 1.8rem;
+            color: var(--dark);
+        }
+        
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .staff-card {
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        
+        .staff-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .staff-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .staff-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .staff-info h4 {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 0.3rem;
+        }
+        
+        .staff-info p {
+            font-size: 0.9rem;
+            color: var(--dark);
+            opacity: 0.8;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 5rem 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-section p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--white);
+            color: var(--primary);
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--white);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--white);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-logo i {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-right: 10px;
+        }
+        
+        .footer-logo span {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .footer-about p {
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            color: var(--white);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-social a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            opacity: 0.8;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        
+        .footer-contact p {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+        
+        .footer-contact i {
+            color: var(--primary);
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.6;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                background-color: var(--white);
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                box-shadow: var(--shadow);
+                transform: translateY(-150%);
+                transition: transform 0.4s;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .team-hero {
+                height: 40vh;
+                min-height: 300px;
+            }
+            
+            .staff-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .staff-image {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.jpeg" alt="Safe Home Africa Logo" style="height:38px;width:auto;border-radius:50%;margin-right:10px;">
+                <span class="logo-text">Safe Home Africa</span>
+            </a>
+            <div class="mobile-menu">☰</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="champion-of-change.html">Champion of Change</a></li>
+                <li><a href="impact.html">Impact</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="admin-login.html" class="admin-link"><i class="fas fa-lock"></i> Admin Login</a></li> <!-- Add this line -->
+            </ul>
+        </div>
+    </header>
+
+    <!-- Team Hero -->
+    <section class="team-hero">
+        <div class="hero-content">
+            <h1>Meet Our Team</h1>
+            <p>Dedicated refugee youth leading change in Nyumanzi Settlement through health and empowerment initiatives</p>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="section-header">
+            <h2>Our Leadership</h2>
+            <p>The passionate individuals guiding Safe Home Africa's vision and strategy</p>
+        </div>
+        
+        <!-- Board Team -->
+        <div class="board-team">
+            <h3 class="section-subheader">Board of Directors</h3>
+            <div class="team-grid">
+                <!-- Board Member 1 -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Board Chair">
+                    </div>
+                    <div class="team-content">
+                        <h3>John Deng</h3>
+                        <p class="position">Board Chair</p>
+                        <p class="bio">Public health specialist with 15 years experience in refugee response programs across East Africa.</p>
+                        <div class="team-social">
+                            <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Board Member 2 -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Vice Chair">
+                    </div>
+                    <div class="team-content">
+                        <h3>Mary Akech</h3>
+                        <p class="position">Vice Chair</p>
+                        <p class="bio">Gender specialist and advocate for women's rights in humanitarian settings.</p>
+                        <div class="team-social">
+                            <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Board Member 3 -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Treasurer">
+                    </div>
+                    <div class="team-content">
+                        <h3>James Lual</h3>
+                        <p class="position">Treasurer</p>
+                        <p class="bio">Financial management expert with extensive NGO accounting experience.</p>
+                        <div class="team-social">
+                            <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Management Team -->
+        <div class="board-team">
+            <h3 class="section-subheader">Management Team</h3>
+            <div class="team-grid">
+                <!-- Executive Director -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="CHOL Gabriel">
+                    </div>
+                    <div class="team-content">
+                        <h3>CHOL Gabriel</h3>
+                        <p class="position">Executive Director</p>
+                        <p class="bio">Founder and visionary leader with expertise in refugee youth empowerment and psychosocial support programs.</p>
+                        <div class="team-social">
+                            <a href="mailto:cholgabriel1998@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                            <a href="tel:+256775480844" title="Phone"><i class="fas fa-phone"></i></a>
+                            <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Program Manager -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="OKELLO Geoffrey">
+                    </div>
+                    <div class="team-content">
+                        <h3>OKELLO Geoffrey</h3>
+                        <p class="position">Program Manager</p>
+                        <p class="bio">Oversees all program implementation with expertise in MHPSS and youth development.</p>
+                        <div class="team-social">
+                            <a href="mailto:omax.twani@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                            <a href="#" title="Phone"><i class="fas fa-phone"></i></a>
+                            <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Finance Officer -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Finance Officer">
+                    </div>
+                    <div class="team-content">
+                        <h3>Sarah Nyandeng</h3>
+                        <p class="position">Finance & Admin Officer</p>
+                        <p class="bio">Manages all financial operations and administrative functions of the organization.</p>
+                        <div class="team-social">
+                            <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+                            <a href="#" title="Phone"><i class="fas fa-phone"></i></a>
+                            <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Full Team -->
+        <div class="full-team">
+            <div class="section-header">
+                <h2>Our Full Team</h2>
+                <p>The dedicated individuals who make our programs possible every day</p>
+            </div>
+            
+            <!-- MHPSS Team -->
+            <div class="department">
+                <div class="department-header">
+                    <i class="fas fa-brain"></i>
+                    <h3>Mental Health & Psychosocial Support</h3>
+                </div>
+                <div class="staff-grid">
+                    <div class="staff-card">
+                        <div class="staff-image">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Psychologist">
+                        </div>
+                        <div class="staff-info">
+                            <h4>Grace Auma</h4>
+                            <p>Psychologist Officer</p>
+                        </div>
+                    </div>
+                    <div class="staff-card">
+                        <div class="staff-image">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Counselor">
+                        </div>
+                        <div class="staff-info">
+                            <h4>Michael Ochieng</h4>
+                            <p>Senior Counselor</p>
+                        </div>
+                    </div>
+                    <div class="staff-card">
+                        <div class="staff-image">
+                            <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Counselor">
+                        </div>
+                        <div class="staff-info">
+                            <h4>Rose Atim</h4>
+                            <p>Community Counselor</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Youth Empowerment -->
+            <div class="department">
+                <div class="department-header">
+                    <i class="fas fa-users"></i>
+                    <h3>Youth Empowerment</h3>
+                </div>
+                <div class="staff-grid">
+                    <div class="staff-card">
+                        <div class="staff-image">
+                            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Officer">
+                        </div>
+                        <div class="staff-info">
+                            <h4>David Okello</h4>
+                            <p>Youth Program Officer</p>
+                        </div>
+                    </div>
+                    <div class="staff-card">
+                        <div class="staff-image">
+                            <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Officer">
+                        </div>
+                        <div class="staff-info">
+                            <h4>Susan Adong</h4>
+                            <p>Vocational Trainer</p>
+                        </div>
+                    </div>
+                    <div class="staff-card">
+                        <div class="staff-image">
+                            <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="Officer">
+                        </div>
+                        <div class="staff-info">
+                            <h4>Robert Kato</h4>
+                            <p>Life Skills Trainer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Field Operations -->
+            <div class="department">
+                <div class="department-header">
+                    <i class="fas fa-hands-helping"></i>
+                    <h3>Field Operations</h3>
+                </div>
+                <div class="staff-grid">
+                    <div class="staff-card">
+                        <div class="staff-image">
+                            <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="Officer">
+                        </div>
+                        <div class="staff-info">
+                            <h4>Alice Nalwoga</h4>
+                            <p>Field Officer</p>
+                        </div>
+                    </div>
+                    <div class="staff-card">
+                        <div class="staff-image">
+                            <img src="https://randomuser.me/api/portraits/men/88.jpg" alt="Officer">
+                        </div>
+                        <div class="staff-info">
+                            <h4>Joseph Opiyo</h4>
+                            <p>Project Assistant</p>
+                        </div>
+                    </div>
+                    <div class="staff-card">
+                        <div class="staff-image">
+                            <img src="https://randomuser.me/api/portraits/women/11.jpg" alt="Officer">
+                        </div>
+                        <div class="staff-info">
+                            <h4>Martha Awor</h4>
+                            <p>Community Mobilizer</p>
+                        </div>
+                    </div>
+                    <div class="staff-card">
+                        <div class="staff-image">
+                            <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Officer">
+                        </div>
+                        <div class="staff-info">
+                            <h4>Patrick Ojok</h4>
+                            <p>Logistics Officer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Support Staff -->
+            <div class="department">
+                <div class="department-header">
+                    <i class="fas fa-user-shield"></i>
+                    <h3>Support Staff</h3>
+                </div>
+                <div class="staff-grid">
+                    <div class="staff-card">
+                        <div class="staff-image">
+                            <img src="https://randomuser.me/api/portraits/women/77.jpg" alt="Staff">
+                        </div>
+                        <div class="staff-info">
+                            <h4>Mary Akello</h4>
+                            <p>Office Administrator</p>
+                        </div>
+                    </div>
+                    <div class="staff-card">
+                        <div class="staff-image">
+                            <img src="https://randomuser.me/api/portraits/men/90.jpg" alt="Staff">
+                        </div>
+                        <div class="staff-info">
+                            <h4>Thomas Opio</h4>
+                            <p>Security Guard</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2>Join Our Team</h2>
+            <p>We're always looking for passionate individuals to join us in transforming lives in Nyumanzi Settlement</p>
+            <a href="contact.html" class="btn">Contact Us About Opportunities</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <img src="logo.jpeg" alt="Safe Home Africa Logo" style="height:38px;width:auto;border-radius:50%;margin-right:10px;">
+                    <span>Safe Home Africa</span>
+                </div>
+                <p class="footer-about">
+                    A refugee youth-led organization providing health, empowerment and protection services in Nyumanzi Settlement since 2022.
+                </p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="programs.html">Our Programs</a></li>
+                    <li><a href="impact.html">Impact Stories</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="team.html">Meet The Team</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="admin-login.html">Admin Login</a></li>
+                   <a href="policy.html" target="_blank" rel="noopener"><strong>Policy</strong></a>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Program Areas</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Mental Health Support</a></li>
+                    <li><a href="#">Youth Empowerment</a></li>
+                    <li><a href="#">Child Protection</a></li>
+                    <li><a href="#">Health Promotion</a></li>
+                    <li><a href="#">Livelihood Programs</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <div class="footer-contact">
+                    <p><i class="fas fa-map-marker-alt"></i> P.O. BOX 530078, Nyumanzi Refugee Settlement, Adjumani District, Uganda</p>
+                    <p><i class="fas fa-phone-alt"></i> +256 775 480 844</p>
+                    <p><i class="fas fa-envelope"></i> safehomeafrica@gmail.com</p>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Safe Home Africa. All Rights Reserved. | Registered CBO No: DZA/1297/23</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
+        // Header Scroll Effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255,255,255,0.95)';
+                header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.background = 'var(--white)';
+                header.style.boxShadow = 'var(--shadow)';
+            }
+        });
+    </script>
+</body>
+</html>

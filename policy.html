@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Privacy & Policy</title>
+  <style>
+    :root {
+      --primary: #E63946;
+      --grey: #F1FAEE;
+      --dark: #1D3557;
+    }
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      background-color: var(--grey);
+      padding: 0;
+      margin: 0;
+      color: var(--dark);
+    }
+    .policy-header {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      background: #fff;
+      padding: 32px 24px 18px 24px;
+      border-bottom: 2px solid var(--primary);
+      box-shadow: 0 2px 12px rgba(69,123,157,0.08);
+    }
+    .policy-header img {
+      height: 54px;
+      width: 54px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 2px 8px rgba(69,123,157,0.12);
+    }
+    h1 {
+      color: var(--primary);
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0;
+      letter-spacing: 1px;
+    }
+    .policy-content {
+      max-width: 700px;
+      margin: 2.5rem auto 0 auto;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(69,123,157,0.08);
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .policy-content p {
+      font-size: 1.08rem;
+      margin-bottom: 22px;
+      color: var(--dark);
+    }
+    .policy-links {
+      margin-top: 20px;
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .policy-links a {
+      display: inline-block;
+      margin: 0;
+      padding: 12px 28px;
+      background-color: var(--primary);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      box-shadow: 0 2px 8px rgba(230,57,70,0.09);
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .policy-links a:hover {
+      background-color: var(--dark);
+      box-shadow: 0 4px 16px rgba(69,123,157,0.18);
+    }
+    @media (max-width: 600px) {
+      .policy-header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 18px 8px 10px 8px;
+        text-align: center;
+      }
+      .policy-header img {
+        height: 44px;
+        width: 44px;
+      }
+      .policy-content {
+        padding: 12px 2px;
+        margin: 1.2rem auto 0 auto;
+        border-radius: 8px;
+        box-shadow: 0 1px 6px rgba(69,123,157,0.07);
+      }
+      .policy-content p {
+        font-size: 1rem;
+      }
+      .policy-links {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+      }
+      .policy-links a {
+        padding: 10px 8px;
+        font-size: 0.98rem;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="policy-header">
+    <img src="logo.jpeg" alt="Safe Home Africa Logo">
+    <h1>Privacy & Policy Documents</h1>
+  </div>
+  <div class="policy-content">
+    <p><strong>Welcome!</strong> Please find the relevant document below. You may choose to read it in your browser or download it for offline access.</p>
+    <div class="policy-links">
+      <a href="assets/docs/SHA-Relevant-Doc.pdf" target="_blank"><i class="fas fa-book-open"></i> Read SHA Relevant Document</a>
+      <a href="assets/docs/SHA-Relevant-Doc.pdf" download><i class="fas fa-download"></i> Download SHA Relevant Document</a>
+    </div>
+  </div>
+</body>
+</html>

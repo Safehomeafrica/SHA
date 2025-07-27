@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Updates | Safe Home Africa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #E63946;
+            --secondary: #457B9D;
+            --light: #F1FAEE;
+            --dark: #1D3557;
+            --accent: #A8DADC;
+            --white: #FFFFFF;
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo i {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover:after,
+        .nav-links a.active:after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* News Hero */
+        .news-hero {
+            height: 50vh;
+            min-height: 400px;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        /* News Section */
+        .news-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .section-header p {
+            color: var(--dark);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        /* News Grid */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .news-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .news-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .news-card:hover .news-image img {
+            transform: scale(1.05);
+        }
+        
+        .news-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .news-content {
+            padding: 2rem;
+        }
+        
+        .news-date {
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .news-date i {
+            margin-right: 5px;
+        }
+        
+        .news-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .news-content p {
+            color: var(--dark);
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--accent);
+        }
+        
+        .news-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 10px;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+            line-height: 1.4;
+        }
+        
+        .author-info p:first-child {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .author-info p:last-child {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--primary);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        /* Categories */
+        .news-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        .category-btn {
+            padding: 0.6rem 1.5rem;
+            background-color: var(--white);
+            color: var(--dark);
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: 1px solid var(--accent);
+            outline: none;
+        }
+        .category-btn:focus {
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+        .category-btn:hover,
+        .category-btn.active {
+            background-color: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+        /* Search Bar */
+        .news-search {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+        }
+        .news-search input[type="text"] {
+            width: 350px;
+            max-width: 90vw;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid var(--accent);
+            border-radius: 30px 0 0 30px;
+            font-size: 1rem;
+            outline: none;
+        }
+        .news-search button {
+            padding: 0 1.5rem;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 0 30px 30px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .news-search button:hover {
+            background-color: var(--dark);
+        }
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: auto;
+            background: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+        }
+        .modal.active {
+            display: flex;
+        }
+        .modal-content {
+            background: var(--white);
+            border-radius: 10px;
+            max-width: 600px;
+            width: 95vw;
+            padding: 2rem;
+            position: relative;
+            box-shadow: var(--shadow);
+            animation: modalIn 0.3s;
+        }
+        @keyframes modalIn {
+            from { transform: translateY(40px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: var(--primary);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        /* Back to Top Button */
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 3000;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        #backToTop:hover {
+            background: var(--dark);
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            background-color: var(--white);
+            padding: 4rem 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            max-width: 800px;
+            margin: 5rem auto;
+            text-align: center;
+        }
+        
+        .newsletter h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .newsletter p {
+            color: var(--dark);
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 1rem;
+            border: 1px solid var(--accent);
+            border-radius: 30px 0 0 30px;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        .newsletter-form button {
+            padding: 0 1.5rem;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 0 30px 30px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .newsletter-form button:hover {
+            background-color: var(--dark);
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+        
+        .page-link {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 5px;
+            border-radius: 50%;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .page-link:hover,
+        .page-link.active {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-logo i {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-right: 10px;
+        }
+        
+        .footer-logo span {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .footer-about p {
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            color: var(--white);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-social a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            opacity: 0.8;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        
+        .footer-contact p {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+        
+        .footer-contact i {
+            color: var(--primary);
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.6;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: 30px;
+                margin-bottom: 1rem;
+            }
+            
+            .newsletter-form button {
+                border-radius: 30px;
+                padding: 1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                background-color: var(--white);
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                box-shadow: var(--shadow);
+                transform: translateY(-150%);
+                transition: transform 0.4s;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .news-hero {
+                height: 40vh;
+                min-height: 300px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .news-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .news-card {
+                border-radius: 14px;
+                box-shadow: 0 4px 18px rgba(0,0,0,0.10);
+                margin-bottom: 1.2rem;
+                padding: 0.5rem 0.5rem 0.8rem 0.5rem;
+            }
+            .news-image {
+                height: 140px;
+                border-radius: 12px 12px 0 0;
+            }
+            .news-image img {
+                border-radius: 12px 12px 0 0;
+            }
+            .news-content {
+                padding: 1rem 0.5rem;
+            }
+            .news-content h3 {
+                font-size: 1.1rem;
+            }
+            .news-content p {
+                font-size: 0.95rem;
+            }
+            .news-date {
+                font-size: 0.85rem;
+            }
+            .news-author .author-avatar {
+                width: 32px;
+                height: 32px;
+            }
+            .modal-content {
+                max-width: 98vw;
+                width: 98vw;
+                padding: 0.7rem 0.3rem;
+                border-radius: 14px;
+                box-shadow: 0 6px 24px rgba(0,0,0,0.13);
+                overflow-y: auto;
+                max-height: 90vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            #modalBody h2 {
+                font-size: 1.05rem;
+                margin-bottom: 0.7rem;
+                text-align: center;
+            }
+            #modalBody p {
+                font-size: 0.9rem;
+                line-height: 1.6;
+                word-break: break-word;
+            }
+            .modal-content img {
+                max-height: 100px;
+                border-radius: 10px;
+                margin: 0 auto;
+                display: block;
+            }
+            .modal-close {
+                top: 8px;
+                right: 10px;
+                font-size: 1.3rem;
+                z-index: 10;
+                background: var(--white);
+                border-radius: 50%;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            }
+            .modal {
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+               <img src="logo.jpeg" alt="Safe Home Africa Logo" style="height:38px;width:auto;border-radius:50%;margin-right:10px;">
+                <span class="logo-text">Safe Home Africa</span>
+            </a>
+            <div class="mobile-menu">☰</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="champion-of-change.html">Champion of Change</a></li>
+                <li><a href="impact.html">Impact</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="news.html" class="active">News</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- News Hero -->
+    <section class="news-hero">
+        <div class="hero-content">
+            <h1>Our Latest Updates</h1>
+            <p>Stay informed about our programs, success stories, and community impact in Nyumanzi Settlement</p>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news-section">
+        <div class="section-header">
+            <h2>News & Stories</h2>
+            <p>Discover how we're transforming lives through our refugee-led initiatives</p>
+        </div>
+        
+        <!-- Search Bar -->
+        <div class="news-search" aria-label="Search news">
+            <input type="text" id="newsSearchInput" placeholder="Search news..." aria-label="Search news">
+            <button id="newsSearchBtn" aria-label="Search"><i class="fas fa-search"></i></button>
+        </div>
+        <!-- Categories -->
+        <div class="news-categories" role="tablist">
+            <a href="#" class="category-btn active" data-category="All Updates" role="tab" aria-selected="true">All Updates</a>
+            <a href="#" class="category-btn" data-category="Mental Health" role="tab">Mental Health</a>
+            <a href="#" class="category-btn" data-category="Peace Building" role="tab">Peace Building</a>
+            <a href="#" class="category-btn" data-category="Livelihoods" role="tab">Livelihoods</a>
+            <a href="#" class="category-btn" data-category="Health Promotion" role="tab">Health Promotion</a>
+            <a href="#" class="category-btn" data-category="Education" role="tab">Education</a>
+            <a href="#" class="category-btn" data-category="Climate Change" role="tab">Climate Change</a>
+        </div>
+        <!-- News Grid -->
+        <div class="news-grid" id="newsGrid">
+            <!-- News items will be rendered by JS -->
+        </div>
+        
+        <!-- Pagination -->
+        <div class="pagination">
+            <a href="#" class="page-link active">1</a>
+            <a href="#" class="page-link">2</a>
+            <a href="#" class="page-link">3</a>
+            <a href="#" class="page-link">4</a>
+            <a href="#" class="page-link">Next</a>
+        </div>
+        
+        <!-- Newsletter -->
+        <div class="newsletter">
+            <h3>Stay Updated</h3>
+            <p>Subscribe to our newsletter to receive the latest news and updates about our programs in Nyumanzi Settlement</p>
+            <form class="newsletter-form" action="https://api.web3forms.com/submit" method="POST">
+                <!-- Replace 'YOUR_ACCESS_KEY_HERE' with your Web3Forms access key -->
+                <input type="hidden" name="access_key" value="9af4279c-3646-4d62-bb22-82c7ad6ee894">
+                <input type="email" name="email" placeholder="Your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <img src="logo.jpeg" alt="Safe Home Africa Logo" style="height:38px;width:auto;border-radius:50%;margin-right:10px;">
+                    <span>Safe Home Africa</span>
+                </div>
+                <p class="footer-about">
+                    A refugee youth-led organization providing health, empowerment and protection services in Nyumanzi Settlement since 2022.
+                </p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="programs.html">Our Programs</a></li>
+                    <li><a href="impact.html">Impact Stories</a></li>
+                    <li><a href="team.html">Meet The Team</a></li>
+                    <li><a href="news.html">News & Updates</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <a href="policy.html" target="_blank" rel="noopener"><strong>Policy</strong></a>
+                    
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Program Areas</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Mental Health Support</a></li>
+                    <li><a href="#">Youth Empowerment</a></li>
+                    <li><a href="#">Child Protection</a></li>
+                    <li><a href="#">Health Promotion</a></li>
+                    <li><a href="#">Livelihood Programs</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <div class="footer-contact">
+                    <p><i class="fas fa-map-marker-alt"></i> P.O. BOX 530078, Nyumanzi Refugee Settlement, Adjumani District, Uganda</p>
+                    <p><i class="fas fa-phone-alt"></i> +256 775 480 844</p>
+                    <p><i class="fas fa-envelope"></i> safehomeafrica@gmail.com</p>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Safe Home Africa. All Rights Reserved. | Registered CBO No: DZA/1297/23</p>
+        </div>
+    </footer>
+
+    <!-- Modal for News Detail -->
+    <div class="modal" id="newsModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-content">
+            <button class="modal-close" id="modalCloseBtn" aria-label="Close modal">&times;</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+    <!-- Back to Top Button -->
+    <button id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+    <script>
+    // News Data
+    const newsData = [
+        {
+            image: "images/Program images/MHPSS.avif",
+            badge: "Mental Health",
+            date: "July 22, 2025",
+            title: "🧠 Mental Health & Psychosocial Support (MHPSS)",
+            summary: "SHA ran a community-centered suicide prevention campaign, reaching both refugee and host community youth. 120 youth and 600 total beneficiaries were educated on mental health access and prevention.",
+            author: { name: "SHA Team", role: "Mental Health Program", avatar: "https://randomuser.me/api/portraits/men/45.jpg" },
+            category: "Mental Health",
+            full: `<strong>🧠 Mental Health & Psychosocial Support (MHPSS)</strong><br><br>
+SHA ran a community-centered suicide prevention campaign, reaching both refugee and host community youth:<br><br>
+<strong>Training Program:</strong><ul style='margin-left:1em;'><li>120 youth were trained, including adolescent girls, boys, and suicide survivors.</li><li>Focus on identification, referral, and management of suicidal behaviors.</li></ul>
+<strong>Community Training:</strong><ul style='margin-left:1em;'><li>60 Youth Champions of Change trained in suicide prevention.</li><li>50 community members sensitized on suicide awareness and management.</li><li>600 total beneficiaries educated on mental health access and prevention.</li></ul>
+<strong>Support Structures:</strong><ul style='margin-left:1em;'><li>Sessions included interactive education, testing services, and counseling.</li><li>Conducted referrals for 180 ulcer patients, 10 SGBV-related health interventions, and offered SRHR counseling.</li></ul>
+These efforts were aimed at building a compassionate, responsive support ecosystem—especially vital in trauma-affected refugee communities.`
+        },
+        {
+            image: "https://images.unsplash.com/photo-1521791136064-7986e73e6855?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+            badge: "Peace Building",
+            date: "May 15, 2025",
+            title: "🕊️ Peace Building: Fostering Unity and Coexistence",
+            summary: "SHA places peace building at the heart of its mission, creating platforms for youth-led dialogue, conflict prevention, and community resilience. 150+ youth engaged in peace conferences and ongoing coordination with partners.",
+            author: { name: "SHA Team", role: "Peace Building Program", avatar: "https://randomuser.me/api/portraits/men/33.jpg" },
+            category: "Peace Building",
+            full: `<strong>🕊️ Peace Building: Fostering Unity and Coexistence</strong><br><br>
+Safe Home Africa (SHA) places peace building at the heart of its mission, actively creating platforms for youth-led dialogue, conflict prevention, and community resilience.<br><br>
+<strong>🔹 Youth Peace Conferences</strong><br>
+Supported by LWF Uganda under the PRM Project<br>
+<ul style='margin-left:1em;'>
+<li>Engaged 150+ young peacebuilders from refugee and host communities.</li>
+<li>Created space for meaningful interactive dialogues, plenary sessions, and panel discussions.</li>
+<li>Focused on: Gender equity, Youth empowerment, Conflict resolution</li>
+<li>Elevated youth voices in policy and program design, especially around Gender and Empowerment of Young Women (GEYW).</li>
+</ul>
+<strong>🔹 Ongoing Peacebuilding Coordination</strong><br>
+With UNHCR, NGOs, and Refugee-Led Organizations (RLOs)<br>
+<ul style='margin-left:1em;'>
+<li>SHA takes part in monthly MHPSS & Peace Building Working Group meetings.</li>
+<li>These gatherings help shape collective strategies on mental health, inclusion, and peaceful coexistence.</li>
+</ul>`
+        },
+        {
+            image: "https://images.unsplash.com/photo-1600880292203-75704362ea02?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+            badge: "Livelihoods",
+            date: "April 22, 2025",
+            title: "🌱 Livelihoods Program: Empowering Refugee Youth and Vulnerable Households",
+            summary: "SHA's Livelihoods Program transforms lives by empowering refugee youth, teenage mothers, PWDs, and vulnerable households through income generation, food security, and youth leadership.",
+            author: { name: "SHA Team", role: "Livelihoods Program", avatar: "https://randomuser.me/api/portraits/men/44.jpg" },
+            category: "Livelihoods",
+            full: `<strong>🌱 Livelihoods Program: Empowering Refugee Youth and Vulnerable Households</strong><br><br>
+Safe Home Africa (SHA) is committed to transforming lives through its Livelihoods Program, which targets refugee youth, teenage mothers, persons with disabilities (PWDs), and child/women-headed households in Nyumanzi Refugee Settlement and across Adjumani District.<br><br>
+<strong>🔹 Program Focus</strong><ul style='margin-left:1em;'>
+<li><strong>Community Poverty Reduction (CPR):</strong> Supporting household-level income-generating activities to reduce economic vulnerability.</li>
+<li><strong>Household Food Security:</strong> Promoting smart agriculture and climate-resilient farming practices to combat food insecurity.</li>
+<li><strong>Teenage Mothers Empowerment:</strong> Providing entrepreneurship skills and access to education for both in-school and out-of-school teenage mothers.</li>
+<li><strong>Youth Leadership:</strong> Mobilizing Youth Champions of Change to lead community development and livelihood initiatives.</li>
+</ul>
+<strong>🔹 Implementation Highlights</strong><br>
+SHA integrates livelihood activities into broader community programs, ensuring inclusive participation and sustainability. Youth Champions are trained to become entrepreneurial role models and mobilizers. Teenage mothers are empowered with practical skills to start small businesses or re-enter formal education.<br><br>
+Climate change advocacy is linked to smart agriculture, helping households adapt and thrive.<br><br>
+<strong>🔹 Inclusive Engagement</strong><br>
+SHA prioritizes vulnerable groups by:<ul style='margin-left:1em;'>
+<li>Engaging local women and disability groups in program design and delivery.</li>
+<li>Partnering with organizations like Youth Empowerment Foundation (YEF) and Refugee Women Activist (RWA) to expand access to digital literacy, business skills, and mentorship.</li>
+</ul>
+<strong>🌟 Impact</strong><ul style='margin-left:1em;'>
+<li>Refugee households are becoming more self-reliant through income-generating activities.</li>
+<li>Teenage mothers are gaining confidence and economic independence.</li>
+<li>Youth leaders are driving change and promoting sustainable development in their communities.</li>
+</ul>`
+        },
+        {
+            image: "https://images.unsplash.com/photo-1605568427561-42ef0f2381c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+            badge: "Health Promotion",
+            date: "April 10, 2025",
+            title: "🩺 Health Promotion: Strengthening Community Well-being",
+            summary: "SHA has made health promotion a central pillar, delivering education, outreach, and integrated health services to refugees and vulnerable groups in Nyumanzi Settlement.",
+            author: { name: "SHA Team", role: "Health Promotion Program", avatar: "https://randomuser.me/api/portraits/men/66.jpg" },
+            category: "Health Promotion",
+            full: `<strong>🩺 Health Promotion: Strengthening Community Well-being</strong><br><br>
+Safe Home Africa (SHA) has made health promotion a central pillar of its work, especially in underserved refugee communities where access to reliable health information and services is limited.<br><br>
+<strong>🔹 Community Health Education & Awareness</strong><br>
+In August 2023, SHA conducted a health education campaign in partnership with St. Elijah Medical Clinic, targeting refugees in Nyumanzi Settlement.<br><br>
+Key activities included:<ul style='margin-left:1em;'>
+<li>Awareness sessions on communicable and non-communicable diseases</li>
+<li>Promotion of safe sanitation practices</li>
+<li>Counseling and testing services for various health conditions</li>
+</ul>
+Outcomes:<ul style='margin-left:1em;'>
+<li>250+ individuals received counseling and testing</li>
+<li>180 ulcer patients were referred for further medical care</li>
+<li>10 cases of SGBV/STI were managed and counseled</li>
+<li>600 community members were sensitized on health access and suicide prevention</li>
+</ul>
+<strong>🔹 Integrated Health Services</strong><br>
+SHA used a multi-pronged approach to deliver health promotion:<ul style='margin-left:1em;'>
+<li>Community awareness campaigns</li>
+<li>Mobile clinics and outreach through local health centers</li>
+<li>Integrated service delivery combining education, testing, and referrals</li>
+<li>Counseling sessions focused on mental health and sexual health</li>
+</ul>
+This strategy helped bridge the gap between health knowledge and access, especially for vulnerable groups like adolescent girls, youth, and survivors of trauma.`
+        },
+        {
+            image: "images/Program images/CHP.avif",
+            badge: "Education",
+            date: "April 5, 2025",
+            title: "🎓 Education Program: Empowering Teenage Mothers and Youth Leaders",
+            summary: "SHA transforms refugee communities through inclusive education for teenage mothers, adolescent girls, and youth leaders—linking learning to empowerment and resilience.",
+            author: { name: "SHA Team", role: "Education Program", avatar: "https://randomuser.me/api/portraits/women/50.jpg" },
+            category: "Education",
+            full: `<strong>🎓 Education Program: Empowering Teenage Mothers and Youth Leaders</strong><br><br>
+Safe Home Africa (SHA) is committed to transforming refugee communities through inclusive education initiatives—especially for teenage mothers, adolescent girls, and youth leaders in Nyumanzi Refugee Settlement and across Adjumani District.<br><br>
+<strong>🔹 Focus Areas</strong><ul style='margin-left:1em;'>
+<li><strong>Teenage Mothers Empowerment:</strong> SHA provides entrepreneurship training and supports access to formal education for both in-school and out-of-school teenage mothers. These efforts help young women regain confidence, build life skills, and improve academic performance.</li>
+<li><strong>Youth Champions of Change:</strong> SHA mobilizes vibrant youth groups to lead education advocacy and peer-to-peer learning. These champions serve as role models, promoting inclusive development and community engagement.</li>
+<li><strong>Education for Sustainable Development:</strong> SHA links education with other sectors like health, livelihoods, and peacebuilding—ensuring youth are equipped to contribute meaningfully to their communities.</li>
+</ul>
+<strong>🌟 Impact Highlights</strong><ul style='margin-left:1em;'>
+<li>Teenage mothers gained practical skills and re-entered learning environments</li>
+<li>Youth leaders actively participated in community sensitization and advocacy</li>
+<li>Education became a tool for empowerment, resilience, and long-term change</li>
+</ul>`
+        },
+        {
+            image: "images/Program images/CCASA.avif",
+            badge: "Climate Change",
+            date: "April 1, 2025",
+            title: "🌍 Climate Change Advocacy: Building Resilient Communities Through Smart Agriculture",
+            summary: "SHA promotes climate-resilient farming, youth engagement, and community awareness to help refugee households adapt to climate change and build sustainable futures.",
+            author: { name: "SHA Team", role: "Climate Change Program", avatar: "https://randomuser.me/api/portraits/men/99.jpg" },
+            category: "Climate Change",
+            full: `<strong>🌍 Climate Change Advocacy: Building Resilient Communities Through Smart Agriculture</strong><br><br>
+Safe Home Africa (SHA) recognizes that climate change is a growing threat to refugee communities—especially in regions already facing food insecurity and environmental stress. SHA’s climate advocacy efforts are designed to promote sustainable farming, community awareness, and youth engagement.<br><br>
+<strong>🔹 Program Focus</strong><ul style='margin-left:1em;'>
+<li><strong>Smart Agriculture Practices:</strong> Promoting climate-resilient farming techniques to reduce food insecurity and improve household nutrition.</li>
+<li><strong>Community Sensitization:</strong> Raising awareness about the impact of climate change on refugee livelihoods and health.</li>
+<li><strong>Youth Mobilization:</strong> Engaging Youth Champions of Change to lead climate education and sustainable agriculture initiatives.</li>
+</ul>
+<strong>🔹 Implementation Highlights</strong><ul style='margin-left:1em;'>
+<li>Climate advocacy is embedded in SHA’s livelihoods and health promotion programs, ensuring that environmental sustainability is part of everyday community development.</li>
+<li>SHA encourages households to adopt eco-friendly farming methods, linking food production with long-term resilience.</li>
+<li>Youth leaders are trained to become climate ambassadors, helping their peers understand and respond to environmental challenges.</li>
+</ul>
+<strong>🌟 Impact</strong><ul style='margin-left:1em;'>
+<li>Refugee households are better equipped to adapt to climate stress through smart agriculture.</li>
+<li>Youth are actively involved in climate education and advocacy.</li>
+<li>SHA is helping build a culture of sustainability and environmental responsibility across Adjumani District.</li>
+</ul>
+SHA’s climate change advocacy is not just about protecting the environment—it’s about empowering communities to thrive in the face of uncertainty.`
+        }
+    ];
+
+    // Assign unique IDs to news items
+    newsData.forEach((item, idx) => { item._id = idx; });
+
+    // Store the currently rendered news array for modal lookup
+    let currentRenderedNews = newsData.slice();
+
+    function renderNews(newsArr) {
+        const grid = document.getElementById('newsGrid');
+        grid.innerHTML = '';
+        if (newsArr.length === 0) {
+            grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;">No news found.</p>';
+            currentRenderedNews = [];
+            return;
+        }
+        currentRenderedNews = newsArr;
+        newsArr.forEach((item, idx) => {
+            grid.innerHTML += `
+            <div class="news-card" tabindex="0" aria-label="${item.title}">
+                <div class="news-image">
+                    <img src="${item.image}" alt="${item.title}">
+                    <span class="news-badge">${item.badge}</span>
+                </div>
+                <div class="news-content">
+                    <div class="news-date"><i class="far fa-calendar-alt"></i> ${item.date}</div>
+                    <h3>${item.title}</h3>
+                    <p>${item.summary}</p>
+                    <div class="news-meta">
+                        <div class="news-author">
+                            <div class="author-avatar"><img src="${item.author.avatar}" alt="${item.author.name}"></div>
+                            <div class="author-info">
+                                <p>${item.author.name}</p>
+                                <p>${item.author.role}</p>
+                            </div>
+                        </div>
+                        <a href="#" class="btn-outline read-more-btn" data-idx="${idx}" aria-label="Read more about ${item.title}">Read More</a>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+    }
+
+    // Initial Render
+    renderNews(newsData);
+
+    // Category Filter
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    categoryBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            categoryBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+            this.classList.add('active');
+            this.setAttribute('aria-selected', 'true');
+            const cat = this.getAttribute('data-category');
+            let filtered = newsData;
+            if (cat && cat !== 'All Updates') {
+                filtered = newsData.filter(n => n.category === cat);
+            }
+            const searchVal = document.getElementById('newsSearchInput').value.trim().toLowerCase();
+            if (searchVal) {
+                filtered = filtered.filter(n => n.title.toLowerCase().includes(searchVal) || n.summary.toLowerCase().includes(searchVal));
+            }
+            renderNews(filtered);
+        });
+    });
+
+    // Search Functionality
+    document.getElementById('newsSearchBtn').addEventListener('click', function() {
+        const val = document.getElementById('newsSearchInput').value.trim().toLowerCase();
+        let filtered = newsData;
+        const activeCat = document.querySelector('.category-btn.active').getAttribute('data-category');
+        if (activeCat && activeCat !== 'All Updates') {
+            filtered = newsData.filter(n => n.category === activeCat);
+        }
+        if (val) {
+            filtered = filtered.filter(n => n.title.toLowerCase().includes(val) || n.summary.toLowerCase().includes(val));
+        }
+        renderNews(filtered);
+    });
+    document.getElementById('newsSearchInput').addEventListener('keyup', function(e) {
+        if (e.key === 'Enter') document.getElementById('newsSearchBtn').click();
+    });
+
+    // Modal Functionality
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('read-more-btn')) {
+            e.preventDefault();
+            const idx = parseInt(e.target.getAttribute('data-idx'), 10);
+            const item = currentRenderedNews[idx];
+            if (!item) return;
+            document.getElementById('modalBody').innerHTML = `
+                <div style="display:flex;flex-direction:column;align-items:center;">
+                    <h2 id="modalTitle" style="margin-top:2.2rem;">${item.title}</h2>
+                    <div style="margin-bottom:1rem;color:var(--primary);font-size:0.95rem;"><i class="far fa-calendar-alt"></i> ${item.date} &nbsp;|&nbsp; <span>${item.badge}</span></div>
+                    <img src="${item.image}" alt="${item.title}" style="width:100%;max-width:340px;border-radius:10px;margin-bottom:1rem;box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+                    <div style="background:var(--light);border-radius:8px;padding:1rem 0.7rem;margin-bottom:1.2rem;width:100%;max-width:340px;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+                        <p style="margin-bottom:1.5rem;font-size:1rem;line-height:1.7;color:var(--dark);">${item.full}</p>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem;">
+                        <img src="${item.author.avatar}" alt="${item.author.name}" style="width:40px;height:40px;border-radius:50%;box-shadow:0 1px 6px rgba(0,0,0,0.07);">
+                        <div><strong>${item.author.name}</strong><br><span style="font-size:0.9em;opacity:0.7;">${item.author.role}</span></div>
+                    </div>
+                </div>
+            `;
+            document.getElementById('newsModal').classList.add('active');
+            document.getElementById('modalCloseBtn').focus();
+        }
+    });
+    document.getElementById('modalCloseBtn').addEventListener('click', function() {
+        document.getElementById('newsModal').classList.remove('active');
+    });
+    document.getElementById('newsModal').addEventListener('click', function(e) {
+        if (e.target === this) this.classList.remove('active');
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') document.getElementById('newsModal').classList.remove('active');
+    });
+
+    // Back to Top Button
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            backToTop.style.display = 'block';
+        } else {
+            backToTop.style.display = 'none';
+        }
+    });
+    backToTop.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Mobile Menu Toggle
+    document.querySelector('.mobile-menu').addEventListener('click', function() {
+        document.querySelector('.nav-links').classList.toggle('active');
+    });
+
+    // Header Scroll Effect
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        if (window.scrollY > 100) {
+            header.style.background = 'rgba(255,255,255,0.95)';
+            header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+        } else {
+            header.style.background = 'var(--white)';
+            header.style.boxShadow = 'var(--shadow)';
+        }
+    });
+
+    // Newsletter Form Submission (handled by Web3Forms, no JS needed)
+    </script>
+
+    <script>
+const section = 'programs'; // or 'impact' or 'news' depending on the page
+const contents = JSON.parse(localStorage.getItem('contents') || '[]');
+const filtered = contents.filter(item => item.section === section);
+const container = document.getElementById('publicContentList');
+filtered.forEach(item => {
+    container.innerHTML += `
+        <div class="public-post">
+            <h3>${item.title}</h3>
+            <div>${item.body}</div>
+            <div style="font-size:0.9em;color:#888;">${item.date}</div>
+        </div>
+    `;
+});
+</script>
+</body>
+</html>
